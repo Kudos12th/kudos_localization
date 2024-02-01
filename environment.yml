@@ -1,7 +1,8 @@
-name: py27pt04
-channels:
-  - defaults
-dependencies:
+
+  - python=3.8
+  - pip
+  - matplotlib==3.4.3
+  - torch==2.1.2
   - _libgcc_mutex=0.1=main
   - ca-certificates=2019.5.15=1
   - certifi=2019.6.16=py27_1
@@ -11,8 +12,6 @@ dependencies:
   - libstdcxx-ng=9.1.0=hdf63c60_0
   - ncurses=6.1=he6710b0_1
   - openssl=1.1.1c=h7b6447c_1
-  - pip=19.2.2=py27_0
-  - python=2.7.16=h8b3fad2_5
   - readline=7.0=h7b6447c_5
   - setuptools=41.0.1=py27_0
   - sqlite=3.29.0=h7b6447c_0
@@ -32,7 +31,6 @@ dependencies:
     - jsonpatch==1.24
     - jsonpointer==2.0
     - kiwisolver==1.1.0
-    - matplotlib==2.2.4
     - numpy==1.16.5
     - opencv-python==4.1.2.30
     - pillow==6.1.0
@@ -47,9 +45,8 @@ dependencies:
     - six==1.12.0
     - subprocess32==3.5.4
     - tensorboardx==1.6
-    - torch==0.4.1
     - torchfile==0.1.0
-    - torchvision==0.2.0
+    - torchvision==0.16.2
     - tornado==5.1.1
     - transforms3d==0.3.1
     - urllib3==1.25.4
