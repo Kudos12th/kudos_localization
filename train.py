@@ -13,7 +13,7 @@ from tools.options import Options
 from network.atloc import AtLoc, AtLocPlus
 from torchvision import transforms, models
 from tools.utils import AtLocCriterion, AtLocPlusCriterion, AverageMeter, Logger
-from data.dataloaders import SevenScenes, RobotCar, MF
+from data.dataloaders import SevenScenes, RobotCar, MF, Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
@@ -69,6 +69,7 @@ target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, transform=data_transform, target_transform=target_transform, seed=opt.seed)
+robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_transform'] if k in kwargs}
 if opt.model == 'AtLoc':
     if opt.dataset == '7Scenes':
         train_set = SevenScenes(train=True, **kwargs)
@@ -76,6 +77,9 @@ if opt.model == 'AtLoc':
     elif opt.dataset == 'RobotCar':
         train_set = RobotCar(train=True, **kwargs)
         val_set = RobotCar(train=False, **kwargs)
+    elif opt.dataset == 'Robocup':
+        train_set = Robocup(train=True,**robocup_kwargs)
+        val_set = Robocup(train=False,**robocup_kwargs)
     else:
         raise NotImplementedError
 elif opt.model == 'AtLocPlus':
