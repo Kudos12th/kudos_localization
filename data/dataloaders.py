@@ -11,6 +11,51 @@ from tools.utils import process_poses, calc_vos_simple, load_image
 from torch.utils import data
 from functools import partial
 
+
+class Robocup(data.Dataset):
+    def __init__(self, data_path, train, transform=None, target_transform=None):
+        self.transform = transform
+        self.target_transform = target_transform
+        self.data_path = data_path
+
+        all_imgs = [f for f in os.listdir(data_path) if f.endswith('.jpg')]
+        np.random.seed(7) 
+        np.random.shuffle(all_imgs)
+
+        # test/val 분할
+        split_index = int(len(all_imgs) * 0.8)  # 80%가 train
+        if train:
+            self.imgs = all_imgs[:split_index] # test
+        else:
+            self.imgs = all_imgs[split_index:] # val
+
+        self.poses = []
+        # 파일 이름에서 pose 추출
+        for img_name in self.imgs:
+            # 파일 이름 : x_y_z.jpg
+            pose = np.array(img_name[:-4].split('_'), dtype=np.float32)
+            self.poses.append(pose)
+        self.poses = np.array(self.poses)
+
+    def __getitem__(self, index):
+        # 이미지를 로드합니다.
+        img_path = osp.join(self.data_path, self.imgs[index])
+        img = load_image(img_path)  # 여기서 `load_image`는 이미지 로드를 위한 적절한 함수입니다.
+        # 포즈를 가져옵니다.
+        pose = self.poses[index]
+
+        # 변환(transform)이 존재하는 경우 적용합니다.
+        if self.transform is not None:
+            img = self.transform(img)
+        if self.target_transform is not None:
+            pose = self.target_transform(pose)
+
+        return img, pose
+
+    def __len__(self):
+        return len(self.imgs)
+
+
 class SevenScenes(data.Dataset):
     def __init__(self, scene, data_path, train, transform=None, target_transform=None, mode=0, seed=7, real=False, skip_images=False, vo_lib='orbslam'):
         self.mode = mode
