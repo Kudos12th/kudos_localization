@@ -9,9 +9,9 @@ def extract_white(input_image_path, output_image_path):
     # BGR에서 HSV로 변환
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-    # 흰색 범위 지정
-    lower_white = np.array([0, 0, 200], dtype=np.uint8)
-    upper_white = np.array([255, 30, 255], dtype=np.uint8)
+    # 흰색 범위 지정 (더 넓은 범위로 설정)
+    lower_white = np.array([0, 0, 190], dtype=np.uint8)
+    upper_white = np.array([255, 40, 255], dtype=np.uint8)
 
     # 흰색 부분 추출
     white_mask = cv2.inRange(hsv, lower_white, upper_white)
