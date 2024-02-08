@@ -1,8 +1,8 @@
 import rospy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
-from geometry_msgs.msg import Pose, PoseWithCovarianceStamped
-from nav_msgs.msg import Odometry  # 수정된 부분
+from geometry_msgs.msg import Pose
+from nav_msgs.msg import Odometry 
 import cv2
 import os
 
