@@ -9,15 +9,32 @@ def extract_white(input_image_path, output_image_path):
     # BGR에서 HSV로 변환
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
-    # 흰색 범위 지정 (더 넓은 범위로 설정)
-    lower_white = np.array([0, 0, 190], dtype=np.uint8)
-    upper_white = np.array([255, 40, 255], dtype=np.uint8)
+    # 초록색 범위 지정
+    lower_green = np.array([40, 40, 40], dtype=np.uint8)
+    upper_green = np.array([80, 255, 255], dtype=np.uint8)
 
-    # 흰색 부분 추출
-    white_mask = cv2.inRange(hsv, lower_white, upper_white)
+    # 초록색 부분 추출
+    green_mask = cv2.inRange(hsv, lower_green, upper_green)
+
+    # 내부의 흰색 범위 지정 (HSV)
+    lower_white_inner_hsv = np.array([0, 0, 200], dtype=np.uint8)
+    upper_white_inner_hsv = np.array([255, 100, 255], dtype=np.uint8)
+
+    # 내부의 흰색 부분 추출
+    white_mask_inner = cv2.inRange(hsv, lower_white_inner_hsv, upper_white_inner_hsv)
+    
+    # 외부의 흰색 범위 지정 (HSV)
+    lower_white_outer_hsv = np.array([0, 0, 190], dtype=np.uint8)
+    upper_white_outer_hsv = np.array([255, 40, 255], dtype=np.uint8)
+
+    # 외부의 흰색 부분 추출
+    white_mask_outer = cv2.inRange(hsv, lower_white_outer_hsv, upper_white_outer_hsv)
+
+    # 내부와 외부의 흰색을 합침
+    white_mask_combined = cv2.bitwise_or(white_mask_inner, white_mask_outer)
 
     # 원본 이미지에서 흰색 부분만 남기기
-    result_image = cv2.bitwise_and(image, image, mask=white_mask)
+    result_image = cv2.bitwise_and(image, image, mask=white_mask_combined)
 
     # 새로운 이미지 저장
     cv2.imwrite(output_image_path, result_image)
