@@ -50,8 +50,8 @@ class ImageSubscriberNode:
             ret, frame = self.cap.read()
 
             # 받은 좌표를 파일 이름으로 사용하여 이미지 저장
-            image_filename = f"{self.output_folder}/received_image_x_{self.move_base_x}_y_{self.move_base_y}_"
-            image_filename += f"odom_x_{self.odom_x}_odom_y_{self.odom_y}_odom_z_{self.odom_z}_odom_w_{self.odom_w}.jpg"
+            image_filename = f"{self.output_folder}/{self.move_base_x}_{self.move_base_y}_"
+            image_filename += f"{self.odom_x}_{self.odom_y}_{self.odom_z}_{self.odom_w}.jpg"
 
             cv2.imwrite(image_filename, frame)
 
