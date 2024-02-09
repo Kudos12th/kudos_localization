@@ -32,19 +32,32 @@ class Robocup(data.Dataset):
             self.imgs = all_imgs[split_index:]  # val
 
         self.poses = []
-        # 파일 이름에서 pose 추출
+        self.yaws = []
+        self.angles = []
+
+        # 파일 이름 : n_x_y_yaw_angle.jpg
+        
         for img_name in self.imgs:
-            # 파일 이름 : x_y_z_yaw_angle.jpg
-            pose = np.array(img_name[:-4].split('_'), dtype=np.float32)
-            self.poses.append(pose)
+            
+            temp = np.array(img_name.split('_'), dtype=np.float32)
+            self.poses.append(temp[1:3])
+            self.yaws.append(temp[3])
+            self.angles.append(temp[4])
+
         self.poses = np.array(self.poses)
+        self.yaws = np.array(self.yaws)
+        self.angles = np.array(self.angles)
+        
 
     def __getitem__(self, index):
         # 이미지를 로드합니다.
         img_path = osp.join(self.data_path, self.imgs[index])
-        img = load_image(img_path)  # 여기서 `load_image`는 이미지 로드를 위한 적절한 함수입니다.
+        img = load_image(img_path)  
+        
         # 포즈를 가져옵니다.
         pose = self.poses[index]
+        yaw = self.yaws[index]
+        angle = self.angles[index]
 
         # 변환(transform)이 존재하는 경우 적용합니다.
         if self.transform is not None:
@@ -52,7 +65,7 @@ class Robocup(data.Dataset):
         if self.target_transform is not None:
             pose = self.target_transform(pose)
 
-        return img, pose
+        return img, pose, yaw, angle
 
     def __len__(self):
         return len(self.imgs)
@@ -99,8 +112,10 @@ class MF(data.Dataset):
 
         imgs  = torch.stack([c[0] for c in clip], dim=0)
         poses = torch.stack([c[1] for c in clip], dim=0)
+        yaws = torch.stack([c[2] for c in clip], dim=0)
+        angles = torch.stack([c[3] for c in clip], dim=0)
         
-        return imgs, poses
+        return imgs, poses, yaws, angles
 
     def __len__(self):
         L = len(self.dset)
