@@ -7,13 +7,28 @@ from std_msgs.msg import String
 import math
 import cv2
 import os
+def euler_from_quaternion(x, y, z, w):
+        t0 = +2.0 * (w * x + y * z)
+        t1 = +1.0 - 2.0 * (x * x + y * y)
+        roll_x = math.atan2(t0, t1)
+     
+        t2 = +2.0 * (w * y - z * x)
+        t2 = +1.0 if t2 > +1.0 else t2
+        t2 = -1.0 if t2 < -1.0 else t2
+        pitch_y = math.asin(t2)
+     
+        t3 = +2.0 * (w * z + x * y)
+        t4 = +1.0 - 2.0 * (y * y + z * z)
+        yaw_z = math.atan2(t3, t4)
+     
+        return yaw_z # in radians
 
 class ImageSubscriberNode:
     def __init__(self):
         rospy.init_node('image_subscriber_node', anonymous=True)
 
         # AMCL 토픽에서 로봇의 위치 메시지를 구독합니다.
-        rospy.Subscriber('/odom', Odometry, self.odom_callback)
+        rospy.Subscriber('/Odometry', Odometry, self.odom_callback)
         rospy.Subscriber('/dxl_ang',String , self.angle_callback)
 
         # OpenCV 초기화
@@ -55,22 +70,7 @@ class ImageSubscriberNode:
         image_subscriber_node.save_image()
         print(self.angle)
  
-    def euler_from_quaternion(self, x, y, z, w):
-        t0 = +2.0 * (w * x + y * z)
-        t1 = +1.0 - 2.0 * (x * x + y * y)
-        roll_x = math.atan2(t0, t1)
-     
-        t2 = +2.0 * (w * y - z * x)
-        t2 = +1.0 if t2 > +1.0 else t2
-        t2 = -1.0 if t2 < -1.0 else t2
-        pitch_y = math.asin(t2)
-     
-        t3 = +2.0 * (w * z + x * y)
-        t4 = +1.0 - 2.0 * (y * y + z * z)
-        yaw_z = math.atan2(t3, t4)
-     
-        return yaw_z # in radians
-
+    
     def save_image(self):
         try:
             # 프레임 읽기
