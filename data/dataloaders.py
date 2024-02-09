@@ -10,26 +10,31 @@ from functools import partial
 
 
 class Robocup(data.Dataset):
-    def __init__(self, data_path, train, transform=None, target_transform=None):
+    def __init__(self, data_path, train, transform=None, target_transform=None, processed=False):
         self.transform = transform
         self.target_transform = target_transform
         self.data_path = data_path
 
-        all_imgs = [f for f in os.listdir(data_path) if f.endswith('.jpg')]
+        if processed:
+            data_dir = osp.join(data_path, 'Kudos/processed_images')
+        else:
+            data_dir = osp.join(data_path, 'Kudos/received_images')
+
+        all_imgs = [f for f in os.listdir(data_dir) if f.endswith('.jpg')]
         np.random.seed(7) 
         np.random.shuffle(all_imgs)
 
         # test/val 분할
         split_index = int(len(all_imgs) * 0.8)  # 80%가 train
         if train:
-            self.imgs = all_imgs[:split_index] # test
+            self.imgs = all_imgs[:split_index]  # train
         else:
-            self.imgs = all_imgs[split_index:] # val
+            self.imgs = all_imgs[split_index:]  # val
 
         self.poses = []
         # 파일 이름에서 pose 추출
         for img_name in self.imgs:
-            # 파일 이름 : x_y_z.jpg
+            # 파일 이름 : x_y_z_yaw_angle.jpg
             pose = np.array(img_name[:-4].split('_'), dtype=np.float32)
             self.poses.append(pose)
         self.poses = np.array(self.poses)
@@ -53,22 +58,20 @@ class Robocup(data.Dataset):
         return len(self.imgs)
 
 
+
 class MF(data.Dataset):
-    def __init__(self, dataset, include_vos=False, no_duplicates=False, *args, **kwargs):
+    def __init__(self, dataset, no_duplicates=False, *args, **kwargs):
 
         self.steps = kwargs.pop('steps', 2)
         self.skip = kwargs.pop('skip', 1)
         self.variable_skip = kwargs.pop('variable_skip', False)
         self.real = kwargs.pop('real', False)
-        self.include_vos = include_vos
         self.train = kwargs['train']
         self.vo_func = kwargs.pop('vo_func', calc_vos_simple)
         self.no_duplicates = no_duplicates
 
         if dataset == 'Robocup':
             self.dset = Robocup(*args, real=self.real, **kwargs)
-            if self.include_vos and self.real:
-                self.gt_dset = Robocup(*args, skip_images=True, real=False, **kwargs)
         else:
             raise NotImplementedError
 
@@ -96,13 +99,7 @@ class MF(data.Dataset):
 
         imgs  = torch.stack([c[0] for c in clip], dim=0)
         poses = torch.stack([c[1] for c in clip], dim=0)
-        if self.include_vos:
-            vos = self.vo_func(poses.unsqueeze(0))[0]
-            if self.real:  # absolute poses need to come from the GT dataset
-                clip = [self.gt_dset[self.dset.gt_idx[i]] for i in idx]
-                poses = torch.stack([c[1] for c in clip], dim=0)
-            poses = torch.cat((poses, vos), dim=0)
-
+        
         return imgs, poses
 
     def __len__(self):
