@@ -9,7 +9,7 @@ from data.robotcar_sdk.camera_model import CameraModel
 from data.robotcar_sdk.image import load_image as robotcar_loader
 from tools.utils import process_poses, calc_vos_simple, load_image
 from torch.utils import data
-from functools import partial #no
+from functools import partial
 
 
 class Robocup(data.Dataset):
