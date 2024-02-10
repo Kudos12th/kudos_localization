@@ -78,25 +78,10 @@ def load_image(filename, loader=default_loader):
         return None
     return img
 
-def qlog(q):
-    if all(q[1:] == 0):
-        q = np.zeros(3)
-    else:
-        q = np.arccos(q[0]) * q[1:] / np.linalg.norm(q[1:])
-    return q
-
 def qexp(q):
     n = np.linalg.norm(q)
     q = np.hstack((np.cos(n), np.sinc(n/np.pi)*q))
     return q
-
-def calc_vos_simple(poses):
-    vos = []
-    for p in poses:
-        pvos = [p[i+1].unsqueeze(0) - p[i].unsqueeze(0) for i in range(len(p)-1)]
-        vos.append(torch.cat(pvos, dim=0))
-    vos = torch.stack(vos, dim=0)
-    return vos
 
 def quaternion_angular_error(q1, q2):
     d = abs(np.dot(q1, q2))
