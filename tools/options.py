@@ -21,7 +21,7 @@ class Options():
         self.parser.add_argument('--seed', type=int, default=7)
         self.parser.add_argument('--lstm', type=bool, default=False)
         self.parser.add_argument('--logdir', type=str, default='./logs')
-        self.parser.add_argument('--exp_name', type=str, default='name')
+        self.parser.add_argument('--exp_name', type=str, default='test')
         self.parser.add_argument('--skip', type=int, default=10)
         self.parser.add_argument('--variable_skip', type=bool, default=False)
         self.parser.add_argument('--real', type=bool, default=False)
