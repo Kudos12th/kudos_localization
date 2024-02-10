@@ -1,5 +1,8 @@
 
 ### [AtLoc: Attention Guided Camera Localization](https://arxiv.org/abs/1909.03557) - AAAI 2020 (Oral).
+<br/>
+
+![image](https://github.com/Kudos12th/kudos_localization/assets/63325450/60675056-3ead-4371-ba81-cba0d410b319)
 
 
 ## Introduction 
