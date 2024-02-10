@@ -20,7 +20,6 @@
   - zlib=1.2.11=h7b6447c_3
   - pip:
     - backports-abc==0.5
-    - backports.functools-lru-cache==1.5
     - chardet==3.0.4
     - colour-demosaicing==0.1.4
     - colour-science==0.3.13
