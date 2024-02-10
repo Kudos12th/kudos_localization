@@ -25,7 +25,7 @@ AtLoc uses a Conda environment that makes it easy to install all dependencies.
 
 ### Robocup Datset
 
-4. Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location. We provide pre-computed values for RobotCar and 7Scenes.
+Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location.
 
 ## Running the code
 
