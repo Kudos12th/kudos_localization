@@ -1,12 +1,10 @@
 import os
 import torch
 import numpy as np
-import pickle
 import os.path as osp
 
-from tools.utils import process_poses, calc_vos_simple, load_image
+from tools.utils import load_image
 from torch.utils import data
-from functools import partial
 
 
 class Robocup(data.Dataset):
@@ -80,7 +78,6 @@ class MF(data.Dataset):
         self.variable_skip = kwargs.pop('variable_skip', False)
         self.real = kwargs.pop('real', False)
         self.train = kwargs['train']
-        self.vo_func = kwargs.pop('vo_func', calc_vos_simple)
         self.no_duplicates = no_duplicates
 
         if dataset == 'Robocup':
