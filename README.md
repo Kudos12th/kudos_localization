@@ -51,18 +51,17 @@ The trained models for partial experiments presented in the paper can be downloa
 
 - AtLoc on `loop`: 
 ```
-python eval.py --scene loop --model AtLoc --gpus 0 --weights ./logs/RobotCar_loop_AtLoc_False/models/epoch_300.pth.tar
+python eval.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar
 ```
 
 Calculates the network attention visualizations and saves them in a video
 
-- For the AtLoc model trained on `loop`:
+- For the AtLoc model trained on `received_images`:
 ```
-python saliency_map.py --scene loop --model AtLoc --gpus 0 --weights ./logs/RobotCar_loop_AtLoc_False/models/epoch_300.pth.tar 
+python saliency_map.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar 
 ```
 
 ## Citation
-If you find this code useful for your research, please cite our paper
 
 ```
 @article{wang2019atloc,
@@ -72,5 +71,3 @@ If you find this code useful for your research, please cite our paper
   year={2019}
 }
 ```
-## Acknowledgements
-Our code partially builds on [MapNet](https://github.com/NVlabs/geomapnet) and [PoseLstm](https://github.com/hazirbas/poselstm-pytorch)
