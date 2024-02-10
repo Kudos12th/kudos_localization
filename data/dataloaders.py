@@ -14,9 +14,9 @@ class Robocup(data.Dataset):
         self.data_path = data_path
 
         if processed:
-            data_dir = osp.join(data_path, 'Kudos/processed_images')
+            data_dir = osp.join(data_path, 'Robocup/processed_images')
         else:
-            data_dir = osp.join(data_path, 'Kudos/received_images')
+            data_dir = osp.join(data_path, 'Robocup/received_images')
 
         all_imgs = [f for f in os.listdir(data_dir) if f.endswith('.jpg')]
         np.random.seed(7) 
