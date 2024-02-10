@@ -25,23 +25,21 @@ AtLoc uses a Conda environment that makes it easy to install all dependencies.
 
 ### Robocup Datset
 
-3. To make training faster, we pre-processed the images using `data/process_robotcar.py`. This script undistorts the images using the camera models provided by the dataset, and scales them such that the shortest side is 256 pixels.
-
-4. Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location. We provide pre-computed values for RobotCar and 7Scenes.
+Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location.
 
 ## Running the code
 
 ### Training
 The executable script is `train.py`. For example:
 
-- AtLoc on `loop`: 
+- AtLoc on `received_images`: 
 ```
-python train.py --dataset Robocup --scene loop --model AtLoc --gpus 0
+python train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
 ```
 
-- AtLocLstm on `loop`: 
+- AtLocLstm on `received_images`: 
 ```
-python train.py --scene loop --model AtLoc --lstm True --gpus 0
+python train.py --scene received_images --model AtLoc --lstm True --gpus 0
 ```
 
 ```

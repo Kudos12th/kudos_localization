@@ -46,7 +46,7 @@ if hasattr(train_criterion, 'sax') and hasattr(train_criterion, 'saq'):
 optimizer = torch.optim.Adam(param_list, lr=opt.lr, weight_decay=opt.weight_decay)
 
 # TODO: RobotCar data
-stats_file = osp.join(opt.data_dir, opt.dataset, 'stats.txt')
+stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'stats.txt')
 stats = np.loadtxt(stats_file)
 
 tforms = [transforms.Resize(opt.cropsize)]
