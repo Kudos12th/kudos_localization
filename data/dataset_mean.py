@@ -1,7 +1,7 @@
 import os.path as osp
 import numpy as np
 
-from data.dataloaders import RobotCar, SevenScenes
+from data.dataloaders import Robocup
 from torchvision import transforms
 from torch.utils.data import DataLoader
 from tools.options import Options
@@ -15,10 +15,8 @@ data_transform = transforms.Compose([
 
 # dataset loader
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=True, real=False, transform=data_transform)
-if opt.dataset == '7Scenes':
-    dset = SevenScenes(**kwargs)
-elif opt.dataset == 'RobotCar':
-    dset = RobotCar(**kwargs)
+if opt.dataset == 'Robocup':
+    dset = Robocup(**kwargs)
 else:
     raise NotImplementedError
 

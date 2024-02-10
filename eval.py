@@ -17,7 +17,7 @@ from tools.options import Options
 from network.atloc import AtLoc, AtLocPlus
 from torchvision import transforms, models
 from tools.utils import quaternion_angular_error, qexp, load_state_dict
-from data.dataloaders import SevenScenes, RobotCar, MF
+from data.dataloaders import Robocup, MF
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
@@ -58,10 +58,8 @@ pose_m, pose_s = np.loadtxt(pose_stats_file)  # mean and stdev
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
 if opt.model == 'AtLoc':
-    if opt.dataset == '7Scenes':
-        data_set = SevenScenes(**kwargs)
-    elif opt.dataset == 'RobotCar':
-        data_set = RobotCar(**kwargs)
+    if opt.dataset == 'Robocup':
+        data_set = Robocup(**kwargs)
     else:
         raise NotImplementedError
 elif opt.model == 'AtLocPlus':
