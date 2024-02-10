@@ -45,16 +45,16 @@ class AtLoc(nn.Module):
 
         if self.lstm:
             self.lstm4dir = FourDirectionalLSTM(seq_size=32, origin_feat_size=feat_dim, hidden_size=256)
-            self.fc_xyz = nn.Linear(feat_dim // 2, 3)
-            self.fc_wpqr = nn.Linear(feat_dim // 2, 3)
+            self.fc_xy = nn.Linear(feat_dim // 2, 2)
+            self.fc_yaw = nn.Linear(feat_dim // 2, 1)
         else:
             self.att = AttentionBlock(feat_dim)
-            self.fc_xyz = nn.Linear(feat_dim, 3)
-            self.fc_wpqr = nn.Linear(feat_dim, 3)
+            self.fc_xy = nn.Linear(feat_dim, 2)
+            self.fc_yaw = nn.Linear(feat_dim, 1)
 
         # initialize
         if pretrained:
-            init_modules = [self.feature_extractor.fc, self.fc_xyz, self.fc_wpqr]
+            init_modules = [self.feature_extractor.fc, self.fc_xy, self.fc_yaw]
         else:
             init_modules = self.modules()
 
@@ -76,9 +76,9 @@ class AtLoc(nn.Module):
         if self.droprate > 0:
             x = F.dropout(x, p=self.droprate)
 
-        xyz = self.fc_xyz(x)
-        wpqr = self.fc_wpqr(x)
-        return torch.cat((xyz, wpqr), 1)
+        xy = self.fc_xy(x)
+        yaw = self.fc_yaw(x)
+        return torch.cat((xy, yaw), 1)
 
 class AtLocPlus(nn.Module):
     def __init__(self, atlocplus):
