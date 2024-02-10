@@ -43,9 +43,6 @@ param_list = [{'params': model.parameters()}]
 if hasattr(train_criterion, 'sax') and hasattr(train_criterion, 'saq'):
     print('learn_beta')
     param_list.append({'params': [train_criterion.sax, train_criterion.saq]})
-if opt.gamma is not None and hasattr(train_criterion, 'srx') and hasattr(train_criterion, 'srq'):
-    print('learn_gamma')
-    param_list.append({'params': [train_criterion.srx, train_criterion.srq]})
 optimizer = torch.optim.Adam(param_list, lr=opt.lr, weight_decay=opt.weight_decay)
 
 stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'stats.txt')
