@@ -16,9 +16,9 @@ class AtLocCriterion(nn.Module):
         self.sax = nn.Parameter(torch.Tensor([sax]), requires_grad=learn_beta)
         self.saq = nn.Parameter(torch.Tensor([saq]), requires_grad=learn_beta)
 
-    def forward(self, pred, targ):
-        loss = torch.exp(-self.sax) * self.t_loss_fn(pred[:, :3], targ[:, :3]) + self.sax + \
-               torch.exp(-self.saq) * self.q_loss_fn(pred[:, 3:], targ[:, 3:]) + self.saq
+    def forward(self, pred, pose, yaw):
+        loss = torch.exp(-self.sax) * self.t_loss_fn(pred[:, :2], pose) + self.sax + \
+               torch.exp(-self.saq) * self.q_loss_fn(pred[:, 2:], yaw) + self.saq
         return loss
 
 

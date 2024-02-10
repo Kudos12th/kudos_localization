@@ -45,6 +45,7 @@ if hasattr(train_criterion, 'sax') and hasattr(train_criterion, 'saq'):
     param_list.append({'params': [train_criterion.sax, train_criterion.saq]})
 optimizer = torch.optim.Adam(param_list, lr=opt.lr, weight_decay=opt.weight_decay)
 
+# TODO: RobotCar data
 stats_file = osp.join(opt.data_dir, opt.dataset, 'stats.txt')
 stats = np.loadtxt(stats_file)
 
@@ -57,22 +58,23 @@ if opt.color_jitter > 0:
     tforms.append(transforms.ColorJitter(brightness=opt.color_jitter, contrast=opt.color_jitter, saturation=opt.color_jitter, hue=0.5))
 else:
     print('Not Using ColorJitter')
+
 tforms.append(transforms.ToTensor())
 tforms.append(transforms.Normalize(mean=stats[0], std=np.sqrt(stats[1])))
+
 data_transform = transforms.Compose(tforms)
 target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, transform=data_transform, target_transform=target_transform, seed=opt.seed)
 robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_transform'] if k in kwargs}
-if opt.model == 'AtLoc':
-    if opt.dataset == 'Robocup':
-        train_set = Robocup(train=True,**robocup_kwargs)
-        val_set = Robocup(train=False,**robocup_kwargs)
-    else:
-        raise NotImplementedError
+
+if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
+    train_set = Robocup(train=True,**robocup_kwargs)
+    val_set = Robocup(train=False,**robocup_kwargs)
 else:
     raise NotImplementedError
+
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
 train_loader = DataLoader(train_set, batch_size=opt.batchsize, shuffle=True, **kwargs)
 val_loader = DataLoader(val_set, batch_size=opt.batchsize, shuffle=False, **kwargs)
@@ -84,6 +86,7 @@ val_criterion.to(device)
 total_steps = opt.steps
 writer = SummaryWriter(log_dir=opt.runs_dir)
 experiment_name = opt.exp_name
+
 for epoch in range(opt.epochs):
     if epoch % opt.val_freq == 0 or epoch == (opt.epochs - 1):
         val_batch_time = AverageMeter()
@@ -125,17 +128,19 @@ for epoch in range(opt.epochs):
     train_data_time = AverageMeter()
     train_batch_time = AverageMeter()
     end = time.time()
-    for batch_idx, (data, target) in enumerate(train_loader):
+    for batch_idx, (data, pose, yaw, angle) in enumerate(train_loader):
         train_data_time.update(time.time() - end)
 
         data_var = Variable(data, requires_grad=True)
-        target_var = Variable(target, requires_grad=False)
+        pose_var = Variable(pose, requires_grad=False)
+        yaw_var = Variable(yaw, requires_grad=False)
         data_var = data_var.to(device)
-        target_var = target_var.to(device)
+        pose_var = pose_var.to(device)
+        yaw_var = yaw_var.to(device)
 
         with torch.set_grad_enabled(True):
             output = model(data_var)
-            loss_tmp = train_criterion(output, target_var)
+            loss_tmp = train_criterion(output, pose_var, yaw_var)
 
         loss_tmp.backward()
         optimizer.step()
