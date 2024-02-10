@@ -45,10 +45,12 @@ if hasattr(train_criterion, 'sax') and hasattr(train_criterion, 'saq'):
     param_list.append({'params': [train_criterion.sax, train_criterion.saq]})
 optimizer = torch.optim.Adam(param_list, lr=opt.lr, weight_decay=opt.weight_decay)
 
-stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'stats.txt')
+stats_file = osp.join(opt.data_dir, opt.dataset, 'stats.txt')
 stats = np.loadtxt(stats_file)
+
 tforms = [transforms.Resize(opt.cropsize)]
 tforms.append(transforms.RandomCrop(opt.cropsize))
+
 if opt.color_jitter > 0:
     assert opt.color_jitter <= 1.0
     print('Using ColorJitter data augmentation')

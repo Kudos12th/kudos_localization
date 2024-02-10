@@ -13,7 +13,7 @@ class Robocup(data.Dataset):
         self.target_transform = target_transform
         self.data_path = data_path
 
-        data_dir = osp.join(data_path, 'Robocup/', scene)
+        data_dir = osp.join(data_path, 'Robocup', scene)
 
         all_imgs = [f for f in os.listdir(data_dir) if f.endswith('.jpg')]
         np.random.seed(7) 
