@@ -16,7 +16,7 @@ class Options():
         self.parser.add_argument('--gpus', type=str, default='-1')
         self.parser.add_argument('--nThreads', default=8, type=int, help='threads for loading data')
         self.parser.add_argument('--dataset', type=str, default='Robocup')
-        self.parser.add_argument('--scene', type=str, default='loop')
+        self.parser.add_argument('--scene', type=str, default='received_images')
         self.parser.add_argument('--model', type=str, default='AtLoc')
         self.parser.add_argument('--seed', type=int, default=7)
         self.parser.add_argument('--lstm', type=bool, default=False)
