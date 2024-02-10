@@ -8,15 +8,12 @@ from torch.utils import data
 
 
 class Robocup(data.Dataset):
-    def __init__(self, data_path, train, transform=None, target_transform=None, processed=False):
+    def __init__(self, scene, data_path, train, transform=None, target_transform=None):
         self.transform = transform
         self.target_transform = target_transform
         self.data_path = data_path
 
-        if processed:
-            data_dir = osp.join(data_path, 'Robocup/processed_images')
-        else:
-            data_dir = osp.join(data_path, 'Robocup/received_images')
+        data_dir = osp.join(data_path, 'Robocup', scene)
 
         all_imgs = [f for f in os.listdir(data_dir) if f.endswith('.jpg')]
         np.random.seed(7) 
