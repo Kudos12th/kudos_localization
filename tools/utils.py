@@ -139,25 +139,6 @@ def quaternion_angular_error(q1, q2):
     theta = 2 * np.arccos(d) * 180 / np.pi
     return theta
 
-def process_poses(poses_in, mean_t, std_t, align_R, align_t, align_s):
-    poses_out = np.zeros((len(poses_in), 6))
-    poses_out[:, 0:3] = poses_in[:, [3, 7, 11]]
-
-  # align
-    for i in range(len(poses_out)):
-        R = poses_in[i].reshape((3, 4))[:3, :3]
-        q = txq.mat2quat(np.dot(align_R, R))
-        q *= np.sign(q[0])  # constrain to hemisphere
-        q = qlog(q)
-        poses_out[i, 3:] = q
-        t = poses_out[i, :3] - align_t
-        poses_out[i, :3] = align_s * np.dot(align_R, t[:, np.newaxis]).squeeze()
-
-    # normalize translation
-    poses_out[:, :3] -= mean_t
-    poses_out[:, :3] /= std_t
-    return poses_out
-
 def load_state_dict(model, state_dict):
     model_names = [n for n,_ in model.named_parameters()]
     state_names = [n for n in state_dict.keys()]
