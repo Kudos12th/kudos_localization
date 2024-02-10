@@ -1,16 +1,9 @@
 import os
 import torch
 from torch import nn
-import scipy.linalg as slin
-import math
-import transforms3d.quaternions as txq
-import transforms3d.euler as txe
 import numpy as np
 import sys
 
-from torch.nn import Module
-from torch.autograd import Variable
-from torch.nn.functional import pad
 from torchvision.datasets.folder import default_loader
 from collections import OrderedDict
 
@@ -28,34 +21,6 @@ class AtLocCriterion(nn.Module):
                torch.exp(-self.saq) * self.q_loss_fn(pred[:, 3:], targ[:, 3:]) + self.saq
         return loss
 
-class AtLocPlusCriterion(nn.Module):
-    def __init__(self, t_loss_fn=nn.L1Loss(), q_loss_fn=nn.L1Loss(), sax=0.0, saq=0.0, srx=0.0, srq=0.0, learn_beta=False, learn_gamma=False):
-        super(AtLocPlusCriterion, self).__init__()
-        self.t_loss_fn = t_loss_fn
-        self.q_loss_fn = q_loss_fn
-        self.sax = nn.Parameter(torch.Tensor([sax]), requires_grad=learn_beta)
-        self.saq = nn.Parameter(torch.Tensor([saq]), requires_grad=learn_beta)
-        self.srx = nn.Parameter(torch.Tensor([srx]), requires_grad=learn_gamma)
-        self.srq = nn.Parameter(torch.Tensor([srq]), requires_grad=learn_gamma)
-
-    def forward(self, pred, targ):
-        # absolute pose loss
-        s = pred.size()
-        abs_loss = torch.exp(-self.sax) * self.t_loss_fn(pred.view(-1, *s[2:])[:, :3], targ.view(-1, *s[2:])[:, :3]) + self.sax + \
-                   torch.exp(-self.saq) * self.q_loss_fn(pred.view(-1, *s[2:])[:, 3:], targ.view(-1, *s[2:])[:, 3:]) + self.saq
-
-        # get the VOs
-        pred_vos = calc_vos_simple(pred)
-        targ_vos = calc_vos_simple(targ)
-
-        # VO loss
-        s = pred_vos.size()
-        vo_loss = torch.exp(-self.srx) * self.t_loss_fn(pred_vos.view(-1, *s[2:])[:, :3], targ_vos.view(-1, *s[2:])[:, :3]) + self.srx + \
-                  torch.exp(-self.srq) * self.q_loss_fn(pred_vos.view(-1, *s[2:])[:, 3:], targ_vos.view(-1, *s[2:])[:, 3:]) + self.srq
-
-        # total loss
-        loss = abs_loss + vo_loss
-        return loss
 
 class Logger(object):
     def __init__(self, filename="Default.log"):

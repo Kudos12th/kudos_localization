@@ -79,15 +79,3 @@ class AtLoc(nn.Module):
         xy = self.fc_xy(x)
         yaw = self.fc_yaw(x)
         return torch.cat((xy, yaw), 1)
-
-class AtLocPlus(nn.Module):
-    def __init__(self, atlocplus):
-        super(AtLocPlus, self).__init__()
-        self.atlocplus = atlocplus
-
-    def forward(self, x):
-        s = x.size()
-        x = x.view(-1, *s[2:])
-        poses = self.atlocplus(x)
-        poses = poses.view(s[0], s[1], -1)
-        return poses

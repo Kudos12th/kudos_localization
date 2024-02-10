@@ -10,9 +10,9 @@ import numpy as np
 
 from tensorboardX import SummaryWriter
 from tools.options import Options
-from network.atloc import AtLoc, AtLocPlus
+from network.atloc import AtLoc
 from torchvision import transforms, models
-from tools.utils import AtLocCriterion, AtLocPlusCriterion, AverageMeter, Logger
+from tools.utils import AtLocCriterion, AverageMeter, Logger
 from data.dataloaders import MF, Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
@@ -35,11 +35,6 @@ if opt.model == 'AtLoc':
     train_criterion = AtLocCriterion(saq=opt.beta, learn_beta=True)
     val_criterion = AtLocCriterion()
     param_list = [{'params': model.parameters()}]
-elif opt.model == 'AtLocPlus':
-    model = AtLocPlus(atlocplus=atloc)
-    kwargs = dict(saq=opt.beta, srq=opt.gamma, learn_beta=True, learn_gamma=True)
-    train_criterion = AtLocPlusCriterion(**kwargs)
-    val_criterion = AtLocPlusCriterion()
 else:
     raise NotImplementedError
 
@@ -77,10 +72,6 @@ if opt.model == 'AtLoc':
         val_set = Robocup(train=False,**robocup_kwargs)
     else:
         raise NotImplementedError
-elif opt.model == 'AtLocPlus':
-    kwargs = dict(kwargs, dataset=opt.dataset, skip=opt.skip, steps=opt.steps, variable_skip=opt.variable_skip)
-    train_set = MF(train=True, real=opt.real, **kwargs)
-    val_set = MF(train=False, real=opt.real, **kwargs)
 else:
     raise NotImplementedError
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}

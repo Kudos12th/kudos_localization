@@ -44,9 +44,6 @@ python train.py --dataset Robocup --scene loop --model AtLoc --gpus 0
 python train.py --scene loop --model AtLoc --lstm True --gpus 0
 ```
 
-- AtLoc+ on `loop`: 
-```
-python train.py  --scene loop --model AtLocPlus --gamma -3.0 --gpus 0
 ```
 
 The meanings of various command-line parameters are documented in train.py. The values of various hyperparameters are defined in `tools/options.py`.

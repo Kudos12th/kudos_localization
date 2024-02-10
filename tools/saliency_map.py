@@ -15,7 +15,7 @@ if not DISPLAY:
     matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-from network.atloc import AtLoc, AtLocPlus
+from network.atloc import AtLoc
 from data.dataloaders import MF, Robocup
 from tools.utils import load_state_dict
 from torch.utils.data import DataLoader
@@ -32,8 +32,6 @@ feature_extractor = models.resnet34(pretrained=False)
 atloc = AtLoc(feature_extractor, droprate=opt.test_dropout, pretrained=False, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
-elif opt.model == 'AtLocPlus':
-    model = AtLocPlus(atlocplus=atloc)
 else:
     raise NotImplementedError
 model.eval()
@@ -55,9 +53,6 @@ if opt.model == 'AtLoc':
         data_set = Robocup(**kwargs)
     else:
         raise NotImplementedError
-elif opt.model == 'AtLocPlus':
-    kwargs = dict(kwargs, dataset=opt.dataset, skip=opt.skip, steps=opt.steps, variable_skip=opt.variable_skip)
-    data_set = MF(real=opt.real, **kwargs)
 else:
     raise NotImplementedError
 L = len(data_set)
