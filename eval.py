@@ -14,7 +14,7 @@ if not DISPLAY:
 import matplotlib.pyplot as plt
 
 from tools.options import Options
-from network.atloc import AtLoc, AtLocPlus
+from network.atloc import AtLoc
 from torchvision import transforms, models
 from tools.utils import quaternion_angular_error, qexp, load_state_dict
 from data.dataloaders import Robocup, MF
@@ -31,8 +31,6 @@ feature_extractor = models.resnet34(pretrained=False)
 atloc = AtLoc(feature_extractor, droprate=opt.test_dropout, pretrained=False, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
-elif opt.model == 'AtLocPlus':
-    model = AtLocPlus(atlocplus=atloc)
 else:
     raise NotImplementedError
 model.eval()
@@ -62,11 +60,9 @@ if opt.model == 'AtLoc':
         data_set = Robocup(**kwargs)
     else:
         raise NotImplementedError
-elif opt.model == 'AtLocPlus':
-    kwargs = dict(kwargs, dataset=opt.dataset, skip=opt.skip, steps=opt.steps, variable_skip=opt.variable_skip)
-    data_set = MF(real=opt.real, **kwargs)
 else:
     raise NotImplementedError
+
 L = len(data_set)
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
 loader = DataLoader(data_set, batch_size=1, shuffle=False, **kwargs)
@@ -117,18 +113,20 @@ for idx, (data, target) in enumerate(loader):
 # calculate losses
 t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses[:, :3], targ_poses[:, :3])])
 q_loss = np.asarray([q_criterion(p, t) for p, t in zip(pred_poses[:, 3:], targ_poses[:, 3:])])
-errors = np.zeros((L, 2))
+
 print('Error in translation: median {:3.2f} m,  mean {:3.2f} m \nError in rotation: median {:3.2f} degrees, mean {:3.2f} degree'\
       .format(np.median(t_loss), np.mean(t_loss), np.median(q_loss), np.mean(q_loss)))
 
 fig = plt.figure()
 real_pose = (pred_poses[:, :3] - pose_m) / pose_s
 gt_pose = (targ_poses[:, :3] - pose_m) / pose_s
+
 plt.plot(gt_pose[:, 1], gt_pose[:, 0], color='black')
 plt.plot(real_pose[:, 1], real_pose[:, 0], color='red')
 plt.xlabel('x [m]')
 plt.ylabel('y [m]')
 plt.plot(gt_pose[0, 1], gt_pose[0, 0], 'y*', markersize=15)
 plt.show(block=True)
+
 image_filename = osp.join(osp.expanduser(opt.results_dir), '{:s}.png'.format(opt.exp_name))
 fig.savefig(image_filename)

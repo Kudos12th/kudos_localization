@@ -1,16 +1,9 @@
 import os
 import torch
 from torch import nn
-import scipy.linalg as slin
-import math
-import transforms3d.quaternions as txq
-import transforms3d.euler as txe
 import numpy as np
 import sys
 
-from torch.nn import Module
-from torch.autograd import Variable
-from torch.nn.functional import pad
 from torchvision.datasets.folder import default_loader
 from collections import OrderedDict
 
@@ -28,34 +21,6 @@ class AtLocCriterion(nn.Module):
                torch.exp(-self.saq) * self.q_loss_fn(pred[:, 3:], targ[:, 3:]) + self.saq
         return loss
 
-class AtLocPlusCriterion(nn.Module):
-    def __init__(self, t_loss_fn=nn.L1Loss(), q_loss_fn=nn.L1Loss(), sax=0.0, saq=0.0, srx=0.0, srq=0.0, learn_beta=False, learn_gamma=False):
-        super(AtLocPlusCriterion, self).__init__()
-        self.t_loss_fn = t_loss_fn
-        self.q_loss_fn = q_loss_fn
-        self.sax = nn.Parameter(torch.Tensor([sax]), requires_grad=learn_beta)
-        self.saq = nn.Parameter(torch.Tensor([saq]), requires_grad=learn_beta)
-        self.srx = nn.Parameter(torch.Tensor([srx]), requires_grad=learn_gamma)
-        self.srq = nn.Parameter(torch.Tensor([srq]), requires_grad=learn_gamma)
-
-    def forward(self, pred, targ):
-        # absolute pose loss
-        s = pred.size()
-        abs_loss = torch.exp(-self.sax) * self.t_loss_fn(pred.view(-1, *s[2:])[:, :3], targ.view(-1, *s[2:])[:, :3]) + self.sax + \
-                   torch.exp(-self.saq) * self.q_loss_fn(pred.view(-1, *s[2:])[:, 3:], targ.view(-1, *s[2:])[:, 3:]) + self.saq
-
-        # get the VOs
-        pred_vos = calc_vos_simple(pred)
-        targ_vos = calc_vos_simple(targ)
-
-        # VO loss
-        s = pred_vos.size()
-        vo_loss = torch.exp(-self.srx) * self.t_loss_fn(pred_vos.view(-1, *s[2:])[:, :3], targ_vos.view(-1, *s[2:])[:, :3]) + self.srx + \
-                  torch.exp(-self.srq) * self.q_loss_fn(pred_vos.view(-1, *s[2:])[:, 3:], targ_vos.view(-1, *s[2:])[:, 3:]) + self.srq
-
-        # total loss
-        loss = abs_loss + vo_loss
-        return loss
 
 class Logger(object):
     def __init__(self, filename="Default.log"):
@@ -113,50 +78,16 @@ def load_image(filename, loader=default_loader):
         return None
     return img
 
-def qlog(q):
-    if all(q[1:] == 0):
-        q = np.zeros(3)
-    else:
-        q = np.arccos(q[0]) * q[1:] / np.linalg.norm(q[1:])
-    return q
-
 def qexp(q):
     n = np.linalg.norm(q)
     q = np.hstack((np.cos(n), np.sinc(n/np.pi)*q))
     return q
-
-def calc_vos_simple(poses):
-    vos = []
-    for p in poses:
-        pvos = [p[i+1].unsqueeze(0) - p[i].unsqueeze(0) for i in range(len(p)-1)]
-        vos.append(torch.cat(pvos, dim=0))
-    vos = torch.stack(vos, dim=0)
-    return vos
 
 def quaternion_angular_error(q1, q2):
     d = abs(np.dot(q1, q2))
     d = min(1.0, max(-1.0, d))
     theta = 2 * np.arccos(d) * 180 / np.pi
     return theta
-
-def process_poses(poses_in, mean_t, std_t, align_R, align_t, align_s):
-    poses_out = np.zeros((len(poses_in), 6))
-    poses_out[:, 0:3] = poses_in[:, [3, 7, 11]]
-
-  # align
-    for i in range(len(poses_out)):
-        R = poses_in[i].reshape((3, 4))[:3, :3]
-        q = txq.mat2quat(np.dot(align_R, R))
-        q *= np.sign(q[0])  # constrain to hemisphere
-        q = qlog(q)
-        poses_out[i, 3:] = q
-        t = poses_out[i, :3] - align_t
-        poses_out[i, :3] = align_s * np.dot(align_R, t[:, np.newaxis]).squeeze()
-
-    # normalize translation
-    poses_out[:, :3] -= mean_t
-    poses_out[:, :3] /= std_t
-    return poses_out
 
 def load_state_dict(model, state_dict):
     model_names = [n for n,_ in model.named_parameters()]

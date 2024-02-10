@@ -10,9 +10,9 @@ import numpy as np
 
 from tensorboardX import SummaryWriter
 from tools.options import Options
-from network.atloc import AtLoc, AtLocPlus
+from network.atloc import AtLoc
 from torchvision import transforms, models
-from tools.utils import AtLocCriterion, AtLocPlusCriterion, AverageMeter, Logger
+from tools.utils import AtLocCriterion, AverageMeter, Logger
 from data.dataloaders import MF, Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
@@ -27,6 +27,7 @@ print('Logging to {:s}'.format(logfile))
 sys.stdout = stdout
 
 # Model
+# TODO: resnet18로 교체해보기 or KD, Pruning?
 feature_extractor = models.resnet34(pretrained=True)
 atloc = AtLoc(feature_extractor, droprate=opt.train_dropout, pretrained=True, lstm=opt.lstm)
 if opt.model == 'AtLoc':
@@ -34,11 +35,6 @@ if opt.model == 'AtLoc':
     train_criterion = AtLocCriterion(saq=opt.beta, learn_beta=True)
     val_criterion = AtLocCriterion()
     param_list = [{'params': model.parameters()}]
-elif opt.model == 'AtLocPlus':
-    model = AtLocPlus(atlocplus=atloc)
-    kwargs = dict(saq=opt.beta, srq=opt.gamma, learn_beta=True, learn_gamma=True)
-    train_criterion = AtLocPlusCriterion(**kwargs)
-    val_criterion = AtLocPlusCriterion()
 else:
     raise NotImplementedError
 
@@ -47,9 +43,6 @@ param_list = [{'params': model.parameters()}]
 if hasattr(train_criterion, 'sax') and hasattr(train_criterion, 'saq'):
     print('learn_beta')
     param_list.append({'params': [train_criterion.sax, train_criterion.saq]})
-if opt.gamma is not None and hasattr(train_criterion, 'srx') and hasattr(train_criterion, 'srq'):
-    print('learn_gamma')
-    param_list.append({'params': [train_criterion.srx, train_criterion.srq]})
 optimizer = torch.optim.Adam(param_list, lr=opt.lr, weight_decay=opt.weight_decay)
 
 stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'stats.txt')
@@ -76,10 +69,6 @@ if opt.model == 'AtLoc':
         val_set = Robocup(train=False,**robocup_kwargs)
     else:
         raise NotImplementedError
-elif opt.model == 'AtLocPlus':
-    kwargs = dict(kwargs, dataset=opt.dataset, skip=opt.skip, steps=opt.steps, variable_skip=opt.variable_skip)
-    train_set = MF(train=True, real=opt.real, **kwargs)
-    val_set = MF(train=False, real=opt.real, **kwargs)
 else:
     raise NotImplementedError
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
