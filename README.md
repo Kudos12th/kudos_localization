@@ -42,8 +42,6 @@ python train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
 python train.py --scene received_images --model AtLoc --lstm True --gpus 0
 ```
 
-```
-
 The meanings of various command-line parameters are documented in train.py. The values of various hyperparameters are defined in `tools/options.py`.
 
 ### Inference
