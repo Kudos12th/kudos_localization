@@ -11,15 +11,15 @@ from torch.utils import data
 
 
 class Robocup(data.Dataset):
-    def __init__(self, scene, data_path, train, transform=None, target_transform=None, real=False):
+    def __init__(self, scene, data_path, train, transform=None, target_transform=None, real=False, seed=7):
         self.transform = transform
         self.target_transform = target_transform
         self.data_path = data_path
-
+        self.seed = seed
         self.data_dir = osp.join(data_path, 'Robocup', scene)
 
         all_imgs = [f for f in os.listdir(self.data_dir) if f.endswith('.jpg')]
-        np.random.seed(7) 
+        np.random.seed(self.seed) 
         np.random.shuffle(all_imgs)
 
         split_index = int(len(all_imgs) * 0.8)
