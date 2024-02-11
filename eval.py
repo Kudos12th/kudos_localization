@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
-from tools.utils import quaternion_angular_error, qexp, load_state_dict
+from tools.utils import load_state_dict
 from data.dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
@@ -65,8 +65,8 @@ L = len(data_set)
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
 loader = DataLoader(data_set, batch_size=1, shuffle=False, **kwargs)
 
-pred_poses = np.zeros((L, 7))  # store all predicted poses
-targ_poses = np.zeros((L, 7))  # store all target poses
+pred_poses = np.zeros((L, 2))  # store all predicted poses
+targ_poses = np.zeros((L, 2))  # store all target poses
 
 # load weights
 model.to(device)
@@ -91,33 +91,31 @@ for idx, (data, pose, yaw, angle) in enumerate(loader):
     with torch.set_grad_enabled(False):
         output = model(data_var)
     s = output.size()
-    output = output.cpu().data.numpy().reshape((-1, s[-1]))
-    target = target.numpy().reshape((-1, s[-1]))
+    # TODO: check and match output, pose, target shape
+    output_pose = output[:, :2].cpu().data.numpy().reshape((-1, s[-1] - 1))
+    output_yaw = output[:, 2:].cpu().data.numpy().reshape((-1, 1))
+    pose = pose.numpy().reshape((-1, s[-1] - 1))
+    yaw = yaw.numpy().reshape((-1, 1))
 
-    # normalize the predicted quaternions
-    q = [qexp(p[3:]) for p in output]
-    output = np.hstack((output[:, :3], np.asarray(q)))
-    q = [qexp(p[3:]) for p in target]
-    target = np.hstack((target[:, :3], np.asarray(q)))
 
     # un-normalize the predicted and target translations
-    output[:, :3] = (output[:, :3] * pose_s) + pose_m
-    target[:, :3] = (target[:, :3] * pose_s) + pose_m
+    output_pose = (output_pose * pose_s) + pose_m
+    pose = (pose * pose_s) + pose_m
 
     # take the middle prediction
-    pred_poses[idx, :] = output[len(output) / 2]
-    targ_poses[idx, :] = target[len(target) / 2]
+    pred_poses[idx, :] = output_pose[len(output_pose) / 2]
+    targ_poses[idx, :] = pose[len(pose) / 2]
 
 # calculate losses
-t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses[:, :2], targ_poses[:, :2])])
-q_loss = np.asarray([y_criterion(p, t) for p, t in zip(pred_poses[:, 2:], targ_poses[:, 2:])])
+t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses, targ_poses)])
+q_loss = np.asarray([y_criterion(p, t) for p, t in zip(output_yaw, yaw)])
 
 print('Error in translation: median {:3.2f} m,  mean {:3.2f} m \nError in rotation: median {:3.2f} degrees, mean {:3.2f} degree'\
       .format(np.median(t_loss), np.mean(t_loss), np.median(q_loss), np.mean(q_loss)))
 
 fig = plt.figure()
-real_pose = (pred_poses[:, :3] - pose_m) / pose_s
-gt_pose = (targ_poses[:, :3] - pose_m) / pose_s
+real_pose = (pred_poses - pose_m) / pose_s
+gt_pose = (targ_poses - pose_m) / pose_s
 
 plt.plot(gt_pose[:, 1], gt_pose[:, 0], color='black')
 plt.plot(real_pose[:, 1], real_pose[:, 0], color='red')
