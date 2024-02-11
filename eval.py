@@ -27,7 +27,7 @@ cuda = torch.cuda.is_available()
 device = "cuda:" + ",".join(str(i) for i in opt.gpus) if cuda else "cpu"
 
 # Model
-feature_extractor = models.resnet34(pretrained=False)
+feature_extractor = models.resnet34(weights=None)
 atloc = AtLoc(feature_extractor, droprate=opt.test_dropout, pretrained=False, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
@@ -103,8 +103,8 @@ for idx, (data, pose, yaw, angle) in enumerate(loader):
     pose = (pose * pose_s) + pose_m
 
     # take the middle prediction
-    pred_poses[idx, :] = output_pose[len(output_pose) / 2]
-    targ_poses[idx, :] = pose[len(pose) / 2]
+    pred_poses[idx, :] = output_pose[len(output_pose) // 2]
+    targ_poses[idx, :] = pose[len(pose) // 2]
 
 # calculate losses
 t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses, targ_poses)])

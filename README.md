@@ -27,19 +27,56 @@ AtLoc uses a Conda environment that makes it easy to install all dependencies.
 
 Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location.
 
+
+- tools/options.py
+```python
+import utils
+# from tools import utils
+```
+
+- data/dataloaders.py
+```python
+import sys
+sys.path.append('../tools')
+from utils import load_image
+# from tools.utils import load_image
+```
+
+
+```
+cd data
+python3 dataset_mean.py --data_dir ./
+```
+
 ## Running the code
 
+- tools/options.py
+```python
+# import utils
+from tools import utils
+```
+
+- data/dataloaders.py
+```python
+# import sys
+# sys.path.append('../tools')
+# from utils import load_image
+from tools.utils import load_image
+```
+
 ### Training
+
+
 The executable script is `train.py`. For example:
 
 - AtLoc on `received_images`: 
 ```
-python train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
+python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
 ```
 
 - AtLocLstm on `received_images`: 
 ```
-python train.py --scene received_images --model AtLoc --lstm True --gpus 0
+python3 train.py --scene received_images --model AtLoc --lstm True --gpus 0
 ```
 
 The meanings of various command-line parameters are documented in train.py. The values of various hyperparameters are defined in `tools/options.py`.
@@ -49,14 +86,14 @@ The trained models for partial experiments presented in the paper can be downloa
 
 - AtLoc on `loop`: 
 ```
-python eval.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar
+python3 eval.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar
 ```
 
 Calculates the network attention visualizations and saves them in a video
 
 - For the AtLoc model trained on `received_images`:
 ```
-python saliency_map.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar 
+python3 saliency_map.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar 
 ```
 
 ## Citation
