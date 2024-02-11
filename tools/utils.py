@@ -83,12 +83,6 @@ def qexp(q):
     q = np.hstack((np.cos(n), np.sinc(n/np.pi)*q))
     return q
 
-def quaternion_angular_error(q1, q2):
-    d = abs(np.dot(q1, q2))
-    d = min(1.0, max(-1.0, d))
-    theta = 2 * np.arccos(d) * 180 / np.pi
-    return theta
-
 def load_state_dict(model, state_dict):
     model_names = [n for n,_ in model.named_parameters()]
     state_names = [n for n in state_dict.keys()]

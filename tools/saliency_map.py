@@ -16,7 +16,7 @@ if not DISPLAY:
 import matplotlib.pyplot as plt
 
 from network.atloc import AtLoc
-from data.dataloaders import MF, Robocup
+from data.dataloaders import Robocup
 from tools.utils import load_state_dict
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
@@ -48,11 +48,8 @@ target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
-if opt.model == 'AtLoc':
-    if opt.dataset == 'Robocup':
-        data_set = Robocup(**kwargs)
-    else:
-        raise NotImplementedError
+if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
+    data_set = Robocup(**kwargs)
 else:
     raise NotImplementedError
 L = len(data_set)
@@ -81,7 +78,7 @@ print('Initialized VideoWriter to {:s} with frames size {:d} x {:d}'.format(out_
 
 # inference
 cm_jet = plt.cm.get_cmap('jet')
-for batch_idx, (data, target) in enumerate(loader):
+for batch_idx, (data, pose, yaw, angle) in enumerate(loader):
     data = data.to(device)
     data_var = Variable(data, requires_grad=True)
 
