@@ -10,7 +10,7 @@ class Options():
     def initialize(self):
         # base options
         self.parser.add_argument('--data_dir', type=str, default='./data')
-        self.parser.add_argument('--batchsize', type=int, default=64)
+        self.parser.add_argument('--batch_size', type=int, default=64)
         self.parser.add_argument('--cropsize', type=int, default=256)
         self.parser.add_argument('--print_freq', type=int, default=20)
         self.parser.add_argument('--gpus', type=str, default='-1')
@@ -39,6 +39,7 @@ class Options():
         self.parser.add_argument('--runs_dir', type=str, default='runs')
         self.parser.add_argument('--lr', type=float, default=5e-5)
         self.parser.add_argument('--weight_decay', type=float, default=0.0005)
+        
 
         # test options
         self.parser.add_argument('--test_dropout', type=float, default=0.0)

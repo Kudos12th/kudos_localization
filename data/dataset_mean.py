@@ -1,10 +1,13 @@
 import os.path as osp
 import numpy as np
 
-from data.dataloaders import Robocup
+from dataloaders import Robocup
 from torchvision import transforms
 from torch.utils.data import DataLoader
-from tools.options import Options
+
+import sys
+sys.path.append('../tools')
+from options import Options
 
 opt = Options().parse()
 
@@ -24,7 +27,7 @@ else:
 loader = DataLoader(dset, batch_size=opt.batch_size, num_workers=opt.nThreads)
 acc = np.zeros((3, opt.cropsize, opt.cropsize))
 sq_acc = np.zeros((3, opt.cropsize, opt.cropsize))
-for batch_idx, (imgs, _) in enumerate(loader):
+for batch_idx, (imgs, _, _, _) in enumerate(loader):
     imgs = imgs.numpy()
     acc += np.sum(imgs, axis=0)
     sq_acc += np.sum(imgs ** 2, axis=0)

@@ -3,19 +3,22 @@ import torch
 import numpy as np
 import os.path as osp
 
+# import sys
+# sys.path.append('../tools')
+# from utils import load_image
 from tools.utils import load_image
 from torch.utils import data
 
 
 class Robocup(data.Dataset):
-    def __init__(self, scene, data_path, train, transform=None, target_transform=None):
+    def __init__(self, scene, data_path, train, transform=None, target_transform=None, real=False):
         self.transform = transform
         self.target_transform = target_transform
         self.data_path = data_path
 
-        data_dir = osp.join(data_path, 'Robocup', scene)
+        self.data_dir = osp.join(data_path, 'Robocup', scene)
 
-        all_imgs = [f for f in os.listdir(data_dir) if f.endswith('.jpg')]
+        all_imgs = [f for f in os.listdir(self.data_dir) if f.endswith('.jpg')]
         np.random.seed(7) 
         np.random.shuffle(all_imgs)
 
@@ -31,6 +34,7 @@ class Robocup(data.Dataset):
 
         # 파일 이름 : n_x_y_yaw_angle.jpg
         for img_name in self.imgs:
+            img_name = img_name[:-4]
             temp = np.array(img_name.split('_'), dtype=np.float32)
 
             self.poses.append(temp[1:3])
@@ -45,7 +49,7 @@ class Robocup(data.Dataset):
             pose_stats = np.empty((0,2))
             for p in self.poses:
                 pose_stats = np.vstack((pose_stats, p))
-            pose_stats_filename = "path/to/save/pose_stats.txt"
+            pose_stats_filename = f"{self.data_dir}/pose_stats.txt"
             mean_t = np.mean(self.poses, axis=0)
             std_t = np.std(self.poses, axis=0)
             np.savetxt(pose_stats_filename, np.vstack((mean_t, std_t)), fmt='%8.7f')
@@ -53,7 +57,7 @@ class Robocup(data.Dataset):
 
     def __getitem__(self, index):
         # 이미지를 로드합니다.
-        img_path = osp.join(self.data_path, self.imgs[index])
+        img_path = osp.join(self.data_dir, self.imgs[index])
         img = load_image(img_path)  
         
         # 포즈를 가져옵니다.

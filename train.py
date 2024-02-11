@@ -66,7 +66,7 @@ target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, transform=data_transform, target_transform=target_transform, seed=opt.seed)
-robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_transform'] if k in kwargs}
+robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_transform', 'scene'] if k in kwargs}
 
 if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
     train_set = Robocup(train=True,**robocup_kwargs)
@@ -75,8 +75,8 @@ else:
     raise NotImplementedError
 
 kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
-train_loader = DataLoader(train_set, batch_size=opt.batchsize, shuffle=True, **kwargs)
-val_loader = DataLoader(val_set, batch_size=opt.batchsize, shuffle=False, **kwargs)
+train_loader = DataLoader(train_set, batch_size=opt.batch_size, shuffle=True, **kwargs)
+val_loader = DataLoader(val_set, batch_size=opt.batch_size, shuffle=False, **kwargs)
 
 model.to(device)
 train_criterion.to(device)
@@ -94,16 +94,20 @@ for epoch in range(opt.epochs):
         end = time.time()
         val_data_time = AverageMeter()
 
-        for batch_idx, (val_data, val_target) in enumerate(val_loader):
+        for batch_idx, (val_data, val_pose, val_yaw, val_angle) in enumerate(val_loader):
             val_data_time.update(time.time() - end)
+
             val_data_var = Variable(val_data, requires_grad=False)
-            val_target_var = Variable(val_target, requires_grad=False)
+            val_pose_var = Variable(val_pose, requires_grad=False)
+            val_yaw_var = Variable(val_yaw, requires_grad=False)
+
             val_data_var = val_data_var.to(device)
-            val_target_var = val_target_var.to(device)
+            val_pose_var = val_pose_var.to(device)
+            val_yaw_var = val_yaw_var.to(device)
 
             with torch.set_grad_enabled(False):
                 val_output = model(val_data_var)
-                val_loss_tmp = val_criterion(val_output, val_target_var)
+                val_loss_tmp = val_criterion(val_output, val_pose_var, val_yaw_var)
                 val_loss_tmp = val_loss_tmp.item()
 
             val_loss.update(val_loss_tmp)
