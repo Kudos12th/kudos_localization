@@ -42,9 +42,12 @@ class Robocup(data.Dataset):
         self.angles = np.array(self.angles)
         
         if train:
+            pose_stats = np.empty((0,2))
+            for p in self.poses:
+                pose_stats = np.vstack((pose_stats, p))
             pose_stats_filename = "path/to/save/pose_stats.txt"
-            mean_t = np.mean(self.poses[:, [0, 1]], axis=0)
-            std_t = np.std(self.poses[:, [0, 1]], axis=0)
+            mean_t = np.mean(self.poses, axis=0)
+            std_t = np.std(self.poses, axis=0)
             np.savetxt(pose_stats_filename, np.vstack((mean_t, std_t)), fmt='%8.7f')
         
 
