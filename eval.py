@@ -17,7 +17,7 @@ from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
 from tools.utils import quaternion_angular_error, qexp, load_state_dict
-from data.dataloaders import Robocup, MF
+from data.dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 

@@ -13,7 +13,7 @@ from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
 from tools.utils import AtLocCriterion, AverageMeter, Logger
-from data.dataloaders import MF, Robocup
+from data.dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
@@ -127,12 +127,14 @@ for epoch in range(opt.epochs):
     train_data_time = AverageMeter()
     train_batch_time = AverageMeter()
     end = time.time()
+
     for batch_idx, (data, pose, yaw, angle) in enumerate(train_loader):
         train_data_time.update(time.time() - end)
 
         data_var = Variable(data, requires_grad=True)
         pose_var = Variable(pose, requires_grad=False)
         yaw_var = Variable(yaw, requires_grad=False)
+
         data_var = data_var.to(device)
         pose_var = pose_var.to(device)
         yaw_var = yaw_var.to(device)
@@ -147,6 +149,7 @@ for epoch in range(opt.epochs):
 
         train_batch_time.update(time.time() - end)
         writer.add_scalar('train_err', loss_tmp.item(), total_steps)
+        
         if batch_idx % opt.print_freq == 0:
             print('Train {:s}: Epoch {:d}\tBatch {:d}/{:d}\tData time {:.4f} ({:.4f})\tBatch time {:.4f} ({:.4f})\tLoss {:f}' \
                   .format(experiment_name, epoch, batch_idx, len(train_loader) - 1, train_data_time.val, train_data_time.avg, train_batch_time.val, train_batch_time.avg, loss_tmp.item()))

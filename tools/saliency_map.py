@@ -16,7 +16,7 @@ if not DISPLAY:
 import matplotlib.pyplot as plt
 
 from network.atloc import AtLoc
-from data.dataloaders import MF, Robocup
+from data.dataloaders import Robocup
 from tools.utils import load_state_dict
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
