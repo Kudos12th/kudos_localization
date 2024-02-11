@@ -37,7 +37,7 @@ model.eval()
 
 # loss functions
 t_criterion = lambda t_pred, t_gt: np.linalg.norm(t_pred - t_gt)
-q_criterion = quaternion_angular_error
+y_criterion = lambda yaw_pred, yaw_target: abs(yaw_pred - yaw_target)
 
 stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'stats.txt')
 stats = np.loadtxt(stats_file)
@@ -49,17 +49,15 @@ data_transform = transforms.Compose([
     transforms.Normalize(mean=stats[0], std=np.sqrt(stats[1]))])
 target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
+# TODO: pose_stats??
 # read mean and stdev for un-normalizing predictions
 pose_stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'pose_stats.txt')
 pose_m, pose_s = np.loadtxt(pose_stats_file)  # mean and stdev
 
 # Load the dataset
 kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
-if opt.model == 'AtLoc':
-    if opt.dataset == 'Robocup':
+if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
         data_set = Robocup(**kwargs)
-    else:
-        raise NotImplementedError
 else:
     raise NotImplementedError
 
@@ -82,7 +80,7 @@ else:
     sys.exit(-1)
 
 # inference loop
-for idx, (data, target) in enumerate(loader):
+for idx, (data, pose, yaw, angle) in enumerate(loader):
     if idx % 200 == 0:
         print('Image {:d} / {:d}'.format(idx, len(loader)))
 
@@ -111,8 +109,8 @@ for idx, (data, target) in enumerate(loader):
     targ_poses[idx, :] = target[len(target) / 2]
 
 # calculate losses
-t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses[:, :3], targ_poses[:, :3])])
-q_loss = np.asarray([q_criterion(p, t) for p, t in zip(pred_poses[:, 3:], targ_poses[:, 3:])])
+t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses[:, :2], targ_poses[:, :2])])
+q_loss = np.asarray([y_criterion(p, t) for p, t in zip(pred_poses[:, 2:], targ_poses[:, 2:])])
 
 print('Error in translation: median {:3.2f} m,  mean {:3.2f} m \nError in rotation: median {:3.2f} degrees, mean {:3.2f} degree'\
       .format(np.median(t_loss), np.mean(t_loss), np.median(q_loss), np.mean(q_loss)))
