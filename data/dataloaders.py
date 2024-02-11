@@ -19,8 +19,7 @@ class Robocup(data.Dataset):
         np.random.seed(7) 
         np.random.shuffle(all_imgs)
 
-        # test/val 분할
-        split_index = int(len(all_imgs) * 0.8)  # 80%가 train
+        split_index = int(len(all_imgs) * 0.8)
         if train:
             self.imgs = all_imgs[:split_index]  # train
         else:
@@ -31,10 +30,9 @@ class Robocup(data.Dataset):
         self.angles = []
 
         # 파일 이름 : n_x_y_yaw_angle.jpg
-        
         for img_name in self.imgs:
-            
             temp = np.array(img_name.split('_'), dtype=np.float32)
+
             self.poses.append(temp[1:3])
             self.yaws.append(temp[3])
             self.angles.append(temp[4])
@@ -42,6 +40,12 @@ class Robocup(data.Dataset):
         self.poses = np.array(self.poses)
         self.yaws = np.array(self.yaws)
         self.angles = np.array(self.angles)
+        
+        if train:
+            pose_stats_filename = "path/to/save/pose_stats.txt"
+            mean_t = np.mean(self.poses[:, [0, 1]], axis=0)
+            std_t = np.std(self.poses[:, [0, 1]], axis=0)
+            np.savetxt(pose_stats_filename, np.vstack((mean_t, std_t)), fmt='%8.7f')
         
 
     def __getitem__(self, index):
@@ -57,6 +61,7 @@ class Robocup(data.Dataset):
         # 변환(transform)이 존재하는 경우 적용합니다.
         if self.transform is not None:
             img = self.transform(img)
+
         if self.target_transform is not None:
             pose = self.target_transform(pose)
 
@@ -89,13 +94,17 @@ class MF(data.Dataset):
             skips = np.random.randint(1, high=self.skip+1, size=self.steps-1)
         else:
             skips = self.skip * np.ones(self.steps-1)
+
         offsets = np.insert(skips, 0, 0).cumsum()
         offsets -= offsets[len(offsets) / 2]
+
         if self.no_duplicates:
             offsets += self.steps/2 * self.skip
         offsets = offsets.astype(np.int)
+
         idx = index + offsets
         idx = np.minimum(np.maximum(idx, 0), len(self.dset)-1)
+        
         assert np.all(idx >= 0), '{:d}'.format(index)
         assert np.all(idx < len(self.dset))
         return idx
@@ -113,6 +122,7 @@ class MF(data.Dataset):
 
     def __len__(self):
         L = len(self.dset)
+
         if self.no_duplicates:
             L -= (self.steps-1)*self.skip
         return L
