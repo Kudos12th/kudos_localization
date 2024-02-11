@@ -3,9 +3,10 @@ import torch
 import numpy as np
 import os.path as osp
 
-import sys
-sys.path.append('../tools')
-from utils import load_image
+# import sys
+# sys.path.append('../tools')
+# from utils import load_image
+from tools.utils import load_image
 from torch.utils import data
 
 

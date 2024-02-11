@@ -1,6 +1,6 @@
 import argparse
 import os
-import utils
+from tools import utils
 import torch
 
 class Options():
@@ -9,7 +9,7 @@ class Options():
 
     def initialize(self):
         # base options
-        self.parser.add_argument('--data_dir', type=str, default='./')
+        self.parser.add_argument('--data_dir', type=str, default='./data')
         self.parser.add_argument('--batch_size', type=int, default=64)
         self.parser.add_argument('--cropsize', type=int, default=256)
         self.parser.add_argument('--print_freq', type=int, default=20)
