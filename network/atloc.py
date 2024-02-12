@@ -1,3 +1,4 @@
+import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -36,6 +37,7 @@ class AtLoc(nn.Module):
         super(AtLoc, self).__init__()
         self.droprate = droprate
         self.lstm = lstm
+        self.inference_time = None
 
         # replace the last FC layer in feature extractor
         self.feature_extractor = feature_extractor
@@ -65,6 +67,8 @@ class AtLoc(nn.Module):
                     nn.init.constant_(m.bias.data, 0)
 
     def forward(self, x):
+        tstart = time.time()
+
         x = self.feature_extractor(x)
         x = F.relu(x)
 
@@ -78,4 +82,16 @@ class AtLoc(nn.Module):
 
         xy = self.fc_xy(x)
         yaw = self.fc_yaw(x)
+
+        self.inference_time = time.time() - tstart
+
         return torch.cat((xy, yaw), 1)
+
+
+    def get_last_inference_time(self, with_nms=True):
+        """
+        Returns a tuple containing most recent inference and NMS time
+        """
+        res = [self.inference_time]
+        
+        return res

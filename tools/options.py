@@ -47,6 +47,7 @@ class Options():
         self.parser.add_argument('--test_dropout', type=float, default=0.0)
         self.parser.add_argument('--weights', type=str, default=None)
         self.parser.add_argument('--save_freq', type=int, default=5)
+        self.parser.add_argument('--cam', type=int, default=0)
 
 
     def parse(self):
