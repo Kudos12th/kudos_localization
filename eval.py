@@ -16,8 +16,8 @@ import matplotlib.pyplot as plt
 from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
-from tools.utils import load_state_dict
-from data.dataloaders import Robocup
+from utils import load_state_dict
+from dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 

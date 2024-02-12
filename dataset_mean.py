@@ -5,9 +5,7 @@ from dataloaders import Robocup
 from torchvision import transforms
 from torch.utils.data import DataLoader
 
-import sys
-sys.path.append('../tools')
-from options import Options
+from tools.options import Options
 
 opt = Options().parse()
 
