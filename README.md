@@ -79,12 +79,17 @@ python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 
 python3 train.py --scene received_images --model AtLoc --lstm True --gpus 0
 ```
 
+- Load pretrained checkpoint :
+```
+python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0 --start_epochs {PRETRAINED_EPOCH} --epochs 200 --weights {CHECKPOINT_PATH.pth.tar}  
+```
+
 The meanings of various command-line parameters are documented in train.py. The values of various hyperparameters are defined in `tools/options.py`.
 
 ### Inference
 The trained models for partial experiments presented in the paper can be downloaded [here](https://drive.google.com/drive/folders/1inY29zupeCmvIF5SsJhQDEzo_jzY0j6Q). The inference script is `eval.py`. Here are some examples, assuming the models are downloaded in `logs`.
 
-- AtLoc on `loop`: 
+- AtLoc on `received_images`: 
 ```
 python3 eval.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar
 ```
