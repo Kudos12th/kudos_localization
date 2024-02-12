@@ -28,41 +28,12 @@ AtLoc uses a Conda environment that makes it easy to install all dependencies.
 Pixel and Pose statistics must be calculated before any training. Use the `data/dataset_mean.py`, which also saves the information at the proper location.
 
 
-- tools/options.py
-```python
-import utils
-# from tools import utils
 ```
-
-- data/dataloaders.py
-```python
-import sys
-sys.path.append('../tools')
-from utils import load_image
-# from tools.utils import load_image
-```
-
-
-```
-cd data
-python3 dataset_mean.py --data_dir ./
+python3 dataset_mean.py --secne {SCENE}
 ```
 
 ## Running the code
 
-- tools/options.py
-```python
-# import utils
-from tools import utils
-```
-
-- data/dataloaders.py
-```python
-# import sys
-# sys.path.append('../tools')
-# from utils import load_image
-from tools.utils import load_image
-```
 
 ### Training
 
@@ -74,9 +45,19 @@ The executable script is `train.py`. For example:
 python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
 ```
 
+- AtLoc on `processed_images`: 
+```
+python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
+```
+
 - AtLocLstm on `received_images`: 
 ```
 python3 train.py --scene received_images --model AtLoc --lstm True --gpus 0
+```
+
+- Load pretrained checkpoint :
+```
+python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0 --start_epochs {PRETRAINED_EPOCH} --epochs 200 --weights {CHECKPOINT_PATH.pth.tar}  
 ```
 
 The meanings of various command-line parameters are documented in train.py. The values of various hyperparameters are defined in `tools/options.py`.
@@ -84,7 +65,7 @@ The meanings of various command-line parameters are documented in train.py. The 
 ### Inference
 The trained models for partial experiments presented in the paper can be downloaded [here](https://drive.google.com/drive/folders/1inY29zupeCmvIF5SsJhQDEzo_jzY0j6Q). The inference script is `eval.py`. Here are some examples, assuming the models are downloaded in `logs`.
 
-- AtLoc on `loop`: 
+- AtLoc on `received_images`: 
 ```
 python3 eval.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar
 ```

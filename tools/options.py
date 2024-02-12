@@ -1,7 +1,6 @@
 import argparse
 import os
-# import utils
-from tools import utils
+import utils
 import torch
 
 class Options():
@@ -31,6 +30,8 @@ class Options():
 
         # train options
         self.parser.add_argument('--epochs', type=int, default=100)
+        self.parser.add_argument('--start_epochs', type=int, default=0)
+
         self.parser.add_argument('--beta', type=float, default=-3.0)
         self.parser.add_argument('--color_jitter', type=float, default=0.7, help='0.7 is only for RobotCar, 0.0 for 7Scenes')
         self.parser.add_argument('--train_dropout', type=float, default=0.5)
@@ -44,7 +45,7 @@ class Options():
 
         # test options
         self.parser.add_argument('--test_dropout', type=float, default=0.0)
-        self.parser.add_argument('--weights', type=str, default='epoch_005.pth.tar')
+        self.parser.add_argument('--weights', type=str, default=None)
         self.parser.add_argument('--save_freq', type=int, default=5)
 
 

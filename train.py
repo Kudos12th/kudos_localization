@@ -12,8 +12,8 @@ from tensorboardX import SummaryWriter
 from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
-from tools.utils import AtLocCriterion, AverageMeter, Logger
-from data.dataloaders import Robocup
+from utils import AtLocCriterion, AverageMeter, Logger, load_state_dict
+from dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
@@ -86,7 +86,18 @@ total_steps = opt.steps
 writer = SummaryWriter(log_dir=opt.runs_dir)
 experiment_name = opt.exp_name
 
-for epoch in range(opt.epochs):
+# load weights
+if opt.weights:
+    weights_filename = osp.expanduser(opt.weights)
+    if osp.isfile(weights_filename):
+        checkpoint = torch.load(weights_filename, map_location=device)
+        load_state_dict(model, checkpoint['model_state_dict'])
+        print('Loaded weights from {:s}'.format(weights_filename))
+    else:
+        print('Could not load weights from {:s}'.format(weights_filename))
+        sys.exit(-1)
+
+for epoch in range(opt.start_epochs, opt.epochs):
     if epoch % opt.val_freq == 0 or epoch == (opt.epochs - 1):
         val_batch_time = AverageMeter()
         val_loss = AverageMeter()
