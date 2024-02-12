@@ -27,7 +27,7 @@ cuda = torch.cuda.is_available()
 device = "cuda:" + ",".join(str(i) for i in opt.gpus) if cuda else "cpu"
 
 # Model
-feature_extractor = models.resnet34(weights=None)
+feature_extractor = models.resnet18(weights=None)
 atloc = AtLoc(feature_extractor, droprate=opt.test_dropout, pretrained=False, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
