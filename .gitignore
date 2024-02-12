@@ -1,5 +1,5 @@
 .idea/*
 *.pyc
 .DS_Store
-data/Robocup/received_images/*.jpg
+*.jpg
 *.tar
