@@ -31,6 +31,8 @@ class Options():
 
         # train options
         self.parser.add_argument('--epochs', type=int, default=100)
+        self.parser.add_argument('--start_epochs', type=int, default=95)
+
         self.parser.add_argument('--beta', type=float, default=-3.0)
         self.parser.add_argument('--color_jitter', type=float, default=0.7, help='0.7 is only for RobotCar, 0.0 for 7Scenes')
         self.parser.add_argument('--train_dropout', type=float, default=0.5)
