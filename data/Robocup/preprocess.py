@@ -7,7 +7,13 @@ def extract_white(input_image_path, output_image_path):
     image = cv2.imread(input_image_path)
 
     # BGR에서 HSV로 변환
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    if image is None:
+        print(f"Error: Unable to load the image from {input_image_path}")
+        return
+        # Add appropriate error handling or terminate the script
+    else:
+        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        # Continue with the rest of your code
 
     # 초록색 범위 지정
     lower_green = np.array([40, 40, 40], dtype=np.uint8)
