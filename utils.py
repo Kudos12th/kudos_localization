@@ -17,6 +17,9 @@ class AtLocCriterion(nn.Module):
         self.saq = nn.Parameter(torch.Tensor([saq]), requires_grad=learn_beta)
 
     def forward(self, pred, pose, yaw):
+        # 확장 또는 크기 변경을 통해 대상 크기를 맞춥니다.
+        yaw = yaw.unsqueeze(1)    # 또는 yaw = yaw.view(-1, 1)
+
         loss = torch.exp(-self.sax) * self.t_loss_fn(pred[:, :2], pose) + self.sax + \
                torch.exp(-self.saq) * self.q_loss_fn(pred[:, 2:], yaw) + self.saq
         return loss

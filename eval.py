@@ -24,10 +24,10 @@ from torch.autograd import Variable
 # Config
 opt = Options().parse()
 cuda = torch.cuda.is_available()
-device = "cuda:" + ",".join(str(i) for i in opt.gpus) if cuda else "cpu"
+device = torch.device("cuda:0" if cuda else "cpu")
 
 # Model
-feature_extractor = models.resnet34(weights=None)
+feature_extractor = models.resnet18(weights=None)
 atloc = AtLoc(feature_extractor, droprate=opt.test_dropout, pretrained=False, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
@@ -71,6 +71,7 @@ targ_poses = np.zeros((L, 2))  # store all target poses
 # load weights
 model.to(device)
 weights_filename = osp.expanduser(opt.weights)
+
 if osp.isfile(weights_filename):
     checkpoint = torch.load(weights_filename, map_location=device)
     load_state_dict(model, checkpoint['model_state_dict'])
