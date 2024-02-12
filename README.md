@@ -77,6 +77,12 @@ Calculates the network attention visualizations and saves them in a video
 python3 saliency_map.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar 
 ```
 
+- Detect
+```
+python3 detect.py --weights {WEIGHTS_PATH}.pth.tar 
+```
+
+
 ## Citation
 
 ```
