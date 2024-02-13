@@ -15,7 +15,7 @@ data_transform = transforms.Compose([
     transforms.ToTensor()])
 
 # dataset loader
-kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=True, real=False, transform=data_transform)
+kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=True, val=False, real=False, transform=data_transform)
 if opt.dataset == 'Robocup':
     dset = Robocup(**kwargs)
 else:

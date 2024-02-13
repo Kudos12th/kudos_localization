@@ -47,7 +47,7 @@ data_transform = transforms.Compose([
 target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
 # Load the dataset
-kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
+kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, val=True, transform=data_transform, target_transform=target_transform, seed=opt.seed)
 if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
     data_set = Robocup(**kwargs)
 else:

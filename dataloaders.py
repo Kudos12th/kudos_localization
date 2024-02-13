@@ -11,7 +11,7 @@ from torch.utils import data
 
 
 class Robocup(data.Dataset):
-    def __init__(self, scene, data_path, train, transform=None, target_transform=None, real=False, seed=7):
+    def __init__(self, scene, data_path, train, val, transform=None, target_transform=None, real=False, seed=7):
         self.transform = transform
         self.target_transform = target_transform
         self.data_path = data_path
@@ -22,11 +22,14 @@ class Robocup(data.Dataset):
         np.random.seed(self.seed) 
         np.random.shuffle(all_imgs)
 
-        split_index = int(len(all_imgs) * 0.8)
+        split_index = int(len(all_imgs) * 0.7)
+        split_index2 = int(len(all_imgs) * 0.85)
         if train:
             self.imgs = all_imgs[:split_index]  # train
+        elif val:
+            self.imgs = all_imgs[split_index:split_index2]  # val
         else:
-            self.imgs = all_imgs[split_index:]  # val
+            self.imgs = all_imgs[split_index2:]  # test
 
         self.poses = []
         self.yaws = []

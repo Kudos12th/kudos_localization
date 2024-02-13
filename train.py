@@ -28,7 +28,7 @@ sys.stdout = stdout
 
 # Model
 # TODO: resnet18로 교체해보기 or KD, Pruning?
-feature_extractor = models.resnet34(weights=None)
+feature_extractor = models.resnet18(weights=None)
 atloc = AtLoc(feature_extractor, droprate=opt.train_dropout, pretrained=True, lstm=opt.lstm)
 if opt.model == 'AtLoc':
     model = atloc
@@ -69,8 +69,9 @@ kwargs = dict(scene=opt.scene, data_path=opt.data_dir, transform=data_transform,
 robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_transform', 'scene'] if k in kwargs}
 
 if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
-    train_set = Robocup(train=True,**robocup_kwargs)
-    val_set = Robocup(train=False,**robocup_kwargs)
+    train_set = Robocup(train=True, val=False,**robocup_kwargs)
+    val_set = Robocup(train=False, val=True, **robocup_kwargs)
+    test_set = Robocup(train=False, val=False, **robocup_kwargs)
 else:
     raise NotImplementedError
 

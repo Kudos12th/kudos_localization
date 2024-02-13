@@ -55,7 +55,7 @@ pose_stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'pose_stats.txt
 pose_m, pose_s = np.loadtxt(pose_stats_file)  # mean and stdev
 
 # Load the dataset
-kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
+kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, val=True, transform=data_transform, target_transform=target_transform, seed=opt.seed)
 if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
         data_set = Robocup(**kwargs)
 else:
