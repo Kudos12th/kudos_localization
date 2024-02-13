@@ -98,6 +98,10 @@ if opt.weights:
         print('Could not load weights from {:s}'.format(weights_filename))
         sys.exit(-1)
 
+# 학습 중에 손실 기록
+train_loss_list = []  # 학습 손실 기록
+val_loss_list = []  # 검증 손실 기록
+
 for epoch in range(opt.start_epochs, opt.epochs):
     if epoch % opt.val_freq == 0 or epoch == (opt.epochs - 1):
         val_batch_time = AverageMeter()
@@ -133,6 +137,9 @@ for epoch in range(opt.start_epochs, opt.epochs):
 
         print('Val {:s}: Epoch {:d}, val_loss {:f}'.format(experiment_name, epoch, val_loss.avg))
 
+        # 검증 손실 기록
+        val_loss_list.append(val_loss.avg)  # 검증 손실 기록
+
         if epoch % opt.save_freq == 0:
             filename = osp.join(opt.models_dir, 'epoch_{:03d}.pth.tar'.format(epoch))
             checkpoint_dict = {'epoch': epoch, 'model_state_dict': model.state_dict(), 'optim_state_dict': optimizer.state_dict(), 'criterion_state_dict': train_criterion.state_dict()}
@@ -166,9 +173,29 @@ for epoch in range(opt.start_epochs, opt.epochs):
         train_batch_time.update(time.time() - end)
         writer.add_scalar('train_err', loss_tmp.item(), total_steps)
         
+        # 학습 중에 손실 기록
+        train_loss_list.append(loss_tmp.item())  # 학습 손실 기록
+
         if batch_idx % opt.print_freq == 0:
             print('Train {:s}: Epoch {:d}\tBatch {:d}/{:d}\tData time {:.4f} ({:.4f})\tBatch time {:.4f} ({:.4f})\tLoss {:f}' \
                   .format(experiment_name, epoch, batch_idx, len(train_loader) - 1, train_data_time.val, train_data_time.avg, train_batch_time.val, train_batch_time.avg, loss_tmp.item()))
         end = time.time()
+        # 학습이 끝난 후에 손실 그래프 시각화
+import matplotlib.pyplot as plt
 
+# 에폭 별 평균 손실 계산
+epoch_losses = []
+for epoch in range(opt.start_epochs, opt.epochs):
+    epoch_loss = sum(train_loss_list[epoch * len(train_loader): (epoch + 1) * len(train_loader)]) / len(train_loader)
+    epoch_losses.append(epoch_loss)
+
+# 손실 그래프 생성 및 저장
+plt.plot(epoch_losses, label='Train Loss')
+plt.plot(val_loss_list, label='Validation Loss')  # 검증 손실 그래프 추가
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.savefig('train_val_loss_graph.png')
+plt.show()
 writer.close()
