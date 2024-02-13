@@ -1,0 +1,364 @@
+learn_beta
+Using ColorJitter data augmentation
+Val Robocup_received_images_AtLoc_False: Epoch 0	Batch 0/12	Data time 1.2736 (1.2736)	Batch time 2.4996 (2.4996)	Loss 8.089323
+Val Robocup_received_images_AtLoc_False: Epoch 0, val_loss 8.477854
+Epoch 0 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 0	Batch 0/58	Data time 1.3413 (1.3413)	Batch time 1.7268 (1.7268)	Loss 24.447109
+Train Robocup_received_images_AtLoc_False: Epoch 0	Batch 20/58	Data time 0.0005 (0.0643)	Batch time 0.1943 (0.2737)	Loss 19.497931
+Train Robocup_received_images_AtLoc_False: Epoch 0	Batch 40/58	Data time 0.0001 (0.0331)	Batch time 0.1961 (0.2358)	Loss 18.416050
+Train Robocup_received_images_AtLoc_False: Epoch 1	Batch 0/58	Data time 1.3425 (1.3425)	Batch time 1.5592 (1.5592)	Loss 19.131720
+Train Robocup_received_images_AtLoc_False: Epoch 1	Batch 20/58	Data time 0.0001 (0.0644)	Batch time 0.1941 (0.2668)	Loss 20.102365
+Train Robocup_received_images_AtLoc_False: Epoch 1	Batch 40/58	Data time 0.0004 (0.0332)	Batch time 0.1976 (0.2325)	Loss 19.475521
+Train Robocup_received_images_AtLoc_False: Epoch 2	Batch 0/58	Data time 1.1964 (1.1964)	Batch time 1.4160 (1.4160)	Loss 13.906055
+Train Robocup_received_images_AtLoc_False: Epoch 2	Batch 20/58	Data time 0.0006 (0.0575)	Batch time 0.1958 (0.2626)	Loss 15.200844
+Train Robocup_received_images_AtLoc_False: Epoch 2	Batch 40/58	Data time 0.0005 (0.0297)	Batch time 0.1978 (0.2304)	Loss 12.467897
+Train Robocup_received_images_AtLoc_False: Epoch 3	Batch 0/58	Data time 1.3784 (1.3784)	Batch time 1.5925 (1.5925)	Loss 16.792082
+Train Robocup_received_images_AtLoc_False: Epoch 3	Batch 20/58	Data time 0.0005 (0.0661)	Batch time 0.1949 (0.2667)	Loss 16.613134
+Train Robocup_received_images_AtLoc_False: Epoch 3	Batch 40/58	Data time 0.0005 (0.0341)	Batch time 0.1960 (0.2326)	Loss 13.171629
+Train Robocup_received_images_AtLoc_False: Epoch 4	Batch 0/58	Data time 1.3055 (1.3055)	Batch time 1.5262 (1.5262)	Loss 13.315251
+Train Robocup_received_images_AtLoc_False: Epoch 4	Batch 20/58	Data time 0.0004 (0.0626)	Batch time 0.1972 (0.2668)	Loss 9.201639
+Train Robocup_received_images_AtLoc_False: Epoch 4	Batch 40/58	Data time 0.0001 (0.0326)	Batch time 0.1968 (0.2369)	Loss 10.976018
+Val Robocup_received_images_AtLoc_False: Epoch 5	Batch 0/12	Data time 1.4565 (1.4565)	Batch time 1.5192 (1.5192)	Loss 2.423428
+Val Robocup_received_images_AtLoc_False: Epoch 5, val_loss 1.826263
+Epoch 5 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 5	Batch 0/58	Data time 1.3613 (1.3613)	Batch time 1.6262 (1.6262)	Loss 13.622911
+Train Robocup_received_images_AtLoc_False: Epoch 5	Batch 20/58	Data time 0.0006 (0.0655)	Batch time 0.1974 (0.2773)	Loss 12.623786
+Train Robocup_received_images_AtLoc_False: Epoch 5	Batch 40/58	Data time 0.0003 (0.0337)	Batch time 0.2074 (0.2398)	Loss 14.154369
+Train Robocup_received_images_AtLoc_False: Epoch 6	Batch 0/58	Data time 1.2449 (1.2449)	Batch time 1.4681 (1.4681)	Loss 13.344749
+Train Robocup_received_images_AtLoc_False: Epoch 6	Batch 20/58	Data time 0.0001 (0.0600)	Batch time 0.1994 (0.2778)	Loss 11.271136
+Train Robocup_received_images_AtLoc_False: Epoch 6	Batch 40/58	Data time 0.0007 (0.0309)	Batch time 0.1992 (0.2407)	Loss 11.206959
+Train Robocup_received_images_AtLoc_False: Epoch 7	Batch 0/58	Data time 1.2872 (1.2872)	Batch time 1.5086 (1.5086)	Loss 11.456424
+Train Robocup_received_images_AtLoc_False: Epoch 7	Batch 20/58	Data time 0.0001 (0.0617)	Batch time 0.2004 (0.2683)	Loss 11.431568
+Train Robocup_received_images_AtLoc_False: Epoch 7	Batch 40/58	Data time 0.0008 (0.0318)	Batch time 0.2059 (0.2353)	Loss 12.077753
+Train Robocup_received_images_AtLoc_False: Epoch 8	Batch 0/58	Data time 1.2521 (1.2521)	Batch time 1.4729 (1.4729)	Loss 12.529779
+Train Robocup_received_images_AtLoc_False: Epoch 8	Batch 20/58	Data time 0.0004 (0.0602)	Batch time 0.2133 (0.2704)	Loss 9.942730
+Train Robocup_received_images_AtLoc_False: Epoch 8	Batch 40/58	Data time 0.0010 (0.0312)	Batch time 0.2155 (0.2424)	Loss 10.797524
+Train Robocup_received_images_AtLoc_False: Epoch 9	Batch 0/58	Data time 1.2921 (1.2921)	Batch time 1.5146 (1.5146)	Loss 9.573900
+Train Robocup_received_images_AtLoc_False: Epoch 9	Batch 20/58	Data time 0.0005 (0.0621)	Batch time 0.2088 (0.2711)	Loss 11.241067
+Train Robocup_received_images_AtLoc_False: Epoch 9	Batch 40/58	Data time 0.0007 (0.0320)	Batch time 0.2054 (0.2375)	Loss 11.856757
+Val Robocup_received_images_AtLoc_False: Epoch 10	Batch 0/12	Data time 1.5247 (1.5247)	Batch time 1.5779 (1.5779)	Loss 2.139359
+Val Robocup_received_images_AtLoc_False: Epoch 10, val_loss 1.647745
+Epoch 10 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 10	Batch 0/58	Data time 1.4467 (1.4467)	Batch time 1.7148 (1.7148)	Loss 9.989520
+Train Robocup_received_images_AtLoc_False: Epoch 10	Batch 20/58	Data time 0.0003 (0.0697)	Batch time 0.2163 (0.2935)	Loss 7.796691
+Train Robocup_received_images_AtLoc_False: Epoch 10	Batch 40/58	Data time 0.0004 (0.0360)	Batch time 0.2154 (0.2532)	Loss 6.948094
+Train Robocup_received_images_AtLoc_False: Epoch 11	Batch 0/58	Data time 1.5439 (1.5439)	Batch time 1.7744 (1.7744)	Loss 9.577863
+Train Robocup_received_images_AtLoc_False: Epoch 11	Batch 20/58	Data time 0.0020 (0.0745)	Batch time 0.2399 (0.3019)	Loss 8.782595
+Train Robocup_received_images_AtLoc_False: Epoch 11	Batch 40/58	Data time 0.0007 (0.0385)	Batch time 0.2050 (0.2585)	Loss 7.134312
+Train Robocup_received_images_AtLoc_False: Epoch 12	Batch 0/58	Data time 1.4537 (1.4537)	Batch time 1.6799 (1.6799)	Loss 7.435527
+Train Robocup_received_images_AtLoc_False: Epoch 12	Batch 20/58	Data time 0.0005 (0.0698)	Batch time 0.2065 (0.2846)	Loss 9.418286
+Train Robocup_received_images_AtLoc_False: Epoch 12	Batch 40/58	Data time 0.0006 (0.0360)	Batch time 0.2038 (0.2435)	Loss 6.607238
+Train Robocup_received_images_AtLoc_False: Epoch 13	Batch 0/58	Data time 1.7961 (1.7961)	Batch time 2.0548 (2.0548)	Loss 8.253538
+Train Robocup_received_images_AtLoc_False: Epoch 13	Batch 20/58	Data time 0.0009 (0.0862)	Batch time 0.2050 (0.2992)	Loss 7.327938
+Train Robocup_received_images_AtLoc_False: Epoch 13	Batch 40/58	Data time 0.0003 (0.0444)	Batch time 0.1969 (0.2522)	Loss 8.816126
+Train Robocup_received_images_AtLoc_False: Epoch 14	Batch 0/58	Data time 1.3833 (1.3833)	Batch time 1.6048 (1.6048)	Loss 6.328136
+Train Robocup_received_images_AtLoc_False: Epoch 14	Batch 20/58	Data time 0.0005 (0.0673)	Batch time 0.2226 (0.2899)	Loss 6.679249
+Train Robocup_received_images_AtLoc_False: Epoch 14	Batch 40/58	Data time 0.0014 (0.0348)	Batch time 0.2140 (0.2513)	Loss 9.759618
+Val Robocup_received_images_AtLoc_False: Epoch 15	Batch 0/12	Data time 1.4121 (1.4121)	Batch time 1.4710 (1.4710)	Loss 1.378152
+Val Robocup_received_images_AtLoc_False: Epoch 15, val_loss 1.384078
+Epoch 15 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 15	Batch 0/58	Data time 1.5225 (1.5225)	Batch time 1.7721 (1.7721)	Loss 6.890578
+Train Robocup_received_images_AtLoc_False: Epoch 15	Batch 20/58	Data time 0.0001 (0.0732)	Batch time 0.1995 (0.2846)	Loss 4.853018
+Train Robocup_received_images_AtLoc_False: Epoch 15	Batch 40/58	Data time 0.0018 (0.0377)	Batch time 0.2313 (0.2449)	Loss 6.370446
+Train Robocup_received_images_AtLoc_False: Epoch 16	Batch 0/58	Data time 1.5756 (1.5756)	Batch time 1.8084 (1.8084)	Loss 6.135109
+Train Robocup_received_images_AtLoc_False: Epoch 16	Batch 20/58	Data time 0.0005 (0.0758)	Batch time 0.2041 (0.3013)	Loss 4.790055
+Train Robocup_received_images_AtLoc_False: Epoch 16	Batch 40/58	Data time 0.0002 (0.0391)	Batch time 0.2077 (0.2534)	Loss 4.997318
+Train Robocup_received_images_AtLoc_False: Epoch 17	Batch 0/58	Data time 1.5746 (1.5746)	Batch time 1.7850 (1.7850)	Loss 5.265830
+Train Robocup_received_images_AtLoc_False: Epoch 17	Batch 20/58	Data time 0.0004 (0.0754)	Batch time 0.2083 (0.2815)	Loss 5.409683
+Train Robocup_received_images_AtLoc_False: Epoch 17	Batch 40/58	Data time 0.0005 (0.0390)	Batch time 0.2157 (0.2468)	Loss 4.728637
+Train Robocup_received_images_AtLoc_False: Epoch 18	Batch 0/58	Data time 1.6343 (1.6343)	Batch time 1.8869 (1.8869)	Loss 6.128798
+Train Robocup_received_images_AtLoc_False: Epoch 18	Batch 20/58	Data time 0.0007 (0.0788)	Batch time 0.2157 (0.3063)	Loss 4.440748
+Train Robocup_received_images_AtLoc_False: Epoch 18	Batch 40/58	Data time 0.0003 (0.0407)	Batch time 0.2107 (0.2614)	Loss 4.394553
+Train Robocup_received_images_AtLoc_False: Epoch 19	Batch 0/58	Data time 1.5362 (1.5362)	Batch time 1.7503 (1.7503)	Loss 5.275042
+Train Robocup_received_images_AtLoc_False: Epoch 19	Batch 20/58	Data time 0.0002 (0.0738)	Batch time 0.2097 (0.2842)	Loss 5.809261
+Train Robocup_received_images_AtLoc_False: Epoch 19	Batch 40/58	Data time 0.0003 (0.0380)	Batch time 0.2008 (0.2443)	Loss 4.864752
+Val Robocup_received_images_AtLoc_False: Epoch 20	Batch 0/12	Data time 1.2900 (1.2900)	Batch time 1.3495 (1.3495)	Loss 1.349606
+Val Robocup_received_images_AtLoc_False: Epoch 20, val_loss 1.222323
+Epoch 20 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 20	Batch 0/58	Data time 1.4939 (1.4939)	Batch time 1.7521 (1.7521)	Loss 3.835661
+Train Robocup_received_images_AtLoc_False: Epoch 20	Batch 20/58	Data time 0.0003 (0.0717)	Batch time 0.1978 (0.2811)	Loss 4.707717
+Train Robocup_received_images_AtLoc_False: Epoch 20	Batch 40/58	Data time 0.0004 (0.0369)	Batch time 0.2126 (0.2443)	Loss 3.866115
+Train Robocup_received_images_AtLoc_False: Epoch 21	Batch 0/58	Data time 1.3638 (1.3638)	Batch time 1.5852 (1.5852)	Loss 5.627141
+Train Robocup_received_images_AtLoc_False: Epoch 21	Batch 20/58	Data time 0.0003 (0.0656)	Batch time 0.2152 (0.2774)	Loss 3.977769
+Train Robocup_received_images_AtLoc_False: Epoch 21	Batch 40/58	Data time 0.0005 (0.0338)	Batch time 0.1998 (0.2404)	Loss 2.610827
+Train Robocup_received_images_AtLoc_False: Epoch 22	Batch 0/58	Data time 1.3385 (1.3385)	Batch time 1.5622 (1.5622)	Loss 6.041919
+Train Robocup_received_images_AtLoc_False: Epoch 22	Batch 20/58	Data time 0.0005 (0.0650)	Batch time 0.2065 (0.2905)	Loss 3.571354
+Train Robocup_received_images_AtLoc_False: Epoch 22	Batch 40/58	Data time 0.0005 (0.0336)	Batch time 0.1994 (0.2496)	Loss 4.641050
+Train Robocup_received_images_AtLoc_False: Epoch 23	Batch 0/58	Data time 1.5962 (1.5962)	Batch time 1.8375 (1.8375)	Loss 3.620583
+Train Robocup_received_images_AtLoc_False: Epoch 23	Batch 20/58	Data time 0.0007 (0.0768)	Batch time 0.2274 (0.2952)	Loss 3.261238
+Train Robocup_received_images_AtLoc_False: Epoch 23	Batch 40/58	Data time 0.0004 (0.0395)	Batch time 0.2005 (0.2492)	Loss 4.016706
+Train Robocup_received_images_AtLoc_False: Epoch 24	Batch 0/58	Data time 1.4426 (1.4426)	Batch time 1.6611 (1.6611)	Loss 3.089936
+Train Robocup_received_images_AtLoc_False: Epoch 24	Batch 20/58	Data time 0.0002 (0.0692)	Batch time 0.2156 (0.2814)	Loss 4.475908
+Train Robocup_received_images_AtLoc_False: Epoch 24	Batch 40/58	Data time 0.0006 (0.0357)	Batch time 0.2060 (0.2465)	Loss 2.826448
+Val Robocup_received_images_AtLoc_False: Epoch 25	Batch 0/12	Data time 1.5232 (1.5232)	Batch time 1.5789 (1.5789)	Loss 1.111124
+Val Robocup_received_images_AtLoc_False: Epoch 25, val_loss 1.035735
+Epoch 25 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 25	Batch 0/58	Data time 1.5444 (1.5444)	Batch time 1.8066 (1.8066)	Loss 2.042977
+Train Robocup_received_images_AtLoc_False: Epoch 25	Batch 20/58	Data time 0.0005 (0.0746)	Batch time 0.2188 (0.3035)	Loss 2.956697
+Train Robocup_received_images_AtLoc_False: Epoch 25	Batch 40/58	Data time 0.0004 (0.0386)	Batch time 0.2005 (0.2577)	Loss 3.004798
+Train Robocup_received_images_AtLoc_False: Epoch 26	Batch 0/58	Data time 1.6253 (1.6253)	Batch time 1.8560 (1.8560)	Loss 3.439112
+Train Robocup_received_images_AtLoc_False: Epoch 26	Batch 20/58	Data time 0.0006 (0.0780)	Batch time 0.2113 (0.2885)	Loss 2.859158
+Train Robocup_received_images_AtLoc_False: Epoch 26	Batch 40/58	Data time 0.0003 (0.0402)	Batch time 0.1977 (0.2459)	Loss 2.447952
+Train Robocup_received_images_AtLoc_False: Epoch 27	Batch 0/58	Data time 1.3781 (1.3781)	Batch time 1.6223 (1.6223)	Loss 3.157828
+Train Robocup_received_images_AtLoc_False: Epoch 27	Batch 20/58	Data time 0.0004 (0.0665)	Batch time 0.1960 (0.2862)	Loss 1.694624
+Train Robocup_received_images_AtLoc_False: Epoch 27	Batch 40/58	Data time 0.0004 (0.0343)	Batch time 0.1979 (0.2439)	Loss 2.134158
+Train Robocup_received_images_AtLoc_False: Epoch 28	Batch 0/58	Data time 1.2443 (1.2443)	Batch time 1.4644 (1.4644)	Loss 2.416026
+Train Robocup_received_images_AtLoc_False: Epoch 28	Batch 20/58	Data time 0.0012 (0.0599)	Batch time 0.2184 (0.2721)	Loss 1.838972
+Train Robocup_received_images_AtLoc_False: Epoch 28	Batch 40/58	Data time 0.0004 (0.0309)	Batch time 0.2062 (0.2398)	Loss 2.247421
+Train Robocup_received_images_AtLoc_False: Epoch 29	Batch 0/58	Data time 1.3360 (1.3360)	Batch time 1.5562 (1.5562)	Loss 3.090680
+Train Robocup_received_images_AtLoc_False: Epoch 29	Batch 20/58	Data time 0.0005 (0.0641)	Batch time 0.1976 (0.2691)	Loss 2.708190
+Train Robocup_received_images_AtLoc_False: Epoch 29	Batch 40/58	Data time 0.0002 (0.0330)	Batch time 0.1976 (0.2347)	Loss 1.874059
+Val Robocup_received_images_AtLoc_False: Epoch 30	Batch 0/12	Data time 1.6848 (1.6848)	Batch time 1.7454 (1.7454)	Loss 0.944785
+Val Robocup_received_images_AtLoc_False: Epoch 30, val_loss 0.949915
+Epoch 30 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 30	Batch 0/58	Data time 1.4818 (1.4818)	Batch time 1.7003 (1.7003)	Loss 1.718817
+Train Robocup_received_images_AtLoc_False: Epoch 30	Batch 20/58	Data time 0.0004 (0.0713)	Batch time 0.2009 (0.2845)	Loss 2.515131
+Train Robocup_received_images_AtLoc_False: Epoch 30	Batch 40/58	Data time 0.0008 (0.0368)	Batch time 0.2065 (0.2494)	Loss 2.489255
+Train Robocup_received_images_AtLoc_False: Epoch 31	Batch 0/58	Data time 1.3958 (1.3958)	Batch time 1.6370 (1.6370)	Loss 1.481646
+Train Robocup_received_images_AtLoc_False: Epoch 31	Batch 20/58	Data time 0.0004 (0.0671)	Batch time 0.1965 (0.2757)	Loss 1.080473
+Train Robocup_received_images_AtLoc_False: Epoch 31	Batch 40/58	Data time 0.0010 (0.0345)	Batch time 0.2099 (0.2414)	Loss 1.497875
+Train Robocup_received_images_AtLoc_False: Epoch 32	Batch 0/58	Data time 1.3989 (1.3989)	Batch time 1.6113 (1.6113)	Loss 1.172846
+Train Robocup_received_images_AtLoc_False: Epoch 32	Batch 20/58	Data time 0.0004 (0.0671)	Batch time 0.1996 (0.2732)	Loss 1.678320
+Train Robocup_received_images_AtLoc_False: Epoch 32	Batch 40/58	Data time 0.0003 (0.0346)	Batch time 0.1974 (0.2381)	Loss 2.861503
+Train Robocup_received_images_AtLoc_False: Epoch 33	Batch 0/58	Data time 1.3144 (1.3144)	Batch time 1.5341 (1.5341)	Loss 1.301680
+Train Robocup_received_images_AtLoc_False: Epoch 33	Batch 20/58	Data time 0.0005 (0.0631)	Batch time 0.1971 (0.2702)	Loss 1.727557
+Train Robocup_received_images_AtLoc_False: Epoch 33	Batch 40/58	Data time 0.0004 (0.0325)	Batch time 0.1980 (0.2360)	Loss 2.014630
+Train Robocup_received_images_AtLoc_False: Epoch 34	Batch 0/58	Data time 1.4316 (1.4316)	Batch time 1.6599 (1.6599)	Loss 1.681518
+Train Robocup_received_images_AtLoc_False: Epoch 34	Batch 20/58	Data time 0.0007 (0.0687)	Batch time 0.2006 (0.2803)	Loss 1.420198
+Train Robocup_received_images_AtLoc_False: Epoch 34	Batch 40/58	Data time 0.0001 (0.0354)	Batch time 0.2088 (0.2414)	Loss 1.330642
+Val Robocup_received_images_AtLoc_False: Epoch 35	Batch 0/12	Data time 1.3569 (1.3569)	Batch time 1.4100 (1.4100)	Loss 1.026714
+Val Robocup_received_images_AtLoc_False: Epoch 35, val_loss 1.049819
+Epoch 35 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 35	Batch 0/58	Data time 1.3119 (1.3119)	Batch time 1.5329 (1.5329)	Loss 1.238198
+Train Robocup_received_images_AtLoc_False: Epoch 35	Batch 20/58	Data time 0.0005 (0.0630)	Batch time 0.1992 (0.2707)	Loss 1.345683
+Train Robocup_received_images_AtLoc_False: Epoch 35	Batch 40/58	Data time 0.0002 (0.0325)	Batch time 0.1986 (0.2368)	Loss 0.780406
+Train Robocup_received_images_AtLoc_False: Epoch 36	Batch 0/58	Data time 1.2474 (1.2474)	Batch time 1.4674 (1.4674)	Loss 1.676369
+Train Robocup_received_images_AtLoc_False: Epoch 36	Batch 20/58	Data time 0.0004 (0.0599)	Batch time 0.1978 (0.2698)	Loss 1.218802
+Train Robocup_received_images_AtLoc_False: Epoch 36	Batch 40/58	Data time 0.0006 (0.0309)	Batch time 0.1965 (0.2352)	Loss 1.616280
+Train Robocup_received_images_AtLoc_False: Epoch 37	Batch 0/58	Data time 1.2844 (1.2844)	Batch time 1.5031 (1.5031)	Loss 1.026339
+Train Robocup_received_images_AtLoc_False: Epoch 37	Batch 20/58	Data time 0.0003 (0.0616)	Batch time 0.2002 (0.2682)	Loss 1.333176
+Train Robocup_received_images_AtLoc_False: Epoch 37	Batch 40/58	Data time 0.0005 (0.0318)	Batch time 0.2028 (0.2354)	Loss 0.914020
+Train Robocup_received_images_AtLoc_False: Epoch 38	Batch 0/58	Data time 1.3139 (1.3139)	Batch time 1.5354 (1.5354)	Loss 0.520542
+Train Robocup_received_images_AtLoc_False: Epoch 38	Batch 20/58	Data time 0.0001 (0.0631)	Batch time 0.1973 (0.2704)	Loss 0.682895
+Train Robocup_received_images_AtLoc_False: Epoch 38	Batch 40/58	Data time 0.0004 (0.0325)	Batch time 0.2012 (0.2356)	Loss 0.406532
+Train Robocup_received_images_AtLoc_False: Epoch 39	Batch 0/58	Data time 1.3227 (1.3227)	Batch time 1.5415 (1.5415)	Loss 0.739523
+Train Robocup_received_images_AtLoc_False: Epoch 39	Batch 20/58	Data time 0.0006 (0.0635)	Batch time 0.1994 (0.2689)	Loss 0.420051
+Train Robocup_received_images_AtLoc_False: Epoch 39	Batch 40/58	Data time 0.0005 (0.0327)	Batch time 0.1973 (0.2348)	Loss 0.409740
+Val Robocup_received_images_AtLoc_False: Epoch 40	Batch 0/12	Data time 1.2797 (1.2797)	Batch time 1.3340 (1.3340)	Loss 0.791926
+Val Robocup_received_images_AtLoc_False: Epoch 40, val_loss 0.758144
+Epoch 40 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 40	Batch 0/58	Data time 1.5363 (1.5363)	Batch time 1.7667 (1.7667)	Loss 0.718708
+Train Robocup_received_images_AtLoc_False: Epoch 40	Batch 20/58	Data time 0.0001 (0.0736)	Batch time 0.1991 (0.2790)	Loss -0.093941
+Train Robocup_received_images_AtLoc_False: Epoch 40	Batch 40/58	Data time 0.0002 (0.0379)	Batch time 0.1997 (0.2396)	Loss 0.608856
+Train Robocup_received_images_AtLoc_False: Epoch 41	Batch 0/58	Data time 1.2089 (1.2089)	Batch time 1.4325 (1.4325)	Loss 1.152221
+Train Robocup_received_images_AtLoc_False: Epoch 41	Batch 20/58	Data time 0.0001 (0.0581)	Batch time 0.1979 (0.2657)	Loss 0.806614
+Train Robocup_received_images_AtLoc_False: Epoch 41	Batch 40/58	Data time 0.0004 (0.0299)	Batch time 0.1981 (0.2332)	Loss 0.927064
+Train Robocup_received_images_AtLoc_False: Epoch 42	Batch 0/58	Data time 1.2921 (1.2921)	Batch time 1.5136 (1.5136)	Loss -0.036553
+Train Robocup_received_images_AtLoc_False: Epoch 42	Batch 20/58	Data time 0.0004 (0.0620)	Batch time 0.1976 (0.2679)	Loss 0.256868
+Train Robocup_received_images_AtLoc_False: Epoch 42	Batch 40/58	Data time 0.0003 (0.0319)	Batch time 0.1995 (0.2353)	Loss 0.404844
+Train Robocup_received_images_AtLoc_False: Epoch 43	Batch 0/58	Data time 1.3889 (1.3889)	Batch time 1.5989 (1.5989)	Loss 1.211142
+Train Robocup_received_images_AtLoc_False: Epoch 43	Batch 20/58	Data time 0.0001 (0.0666)	Batch time 0.1972 (0.2738)	Loss 0.296560
+Train Robocup_received_images_AtLoc_False: Epoch 43	Batch 40/58	Data time 0.0001 (0.0343)	Batch time 0.1978 (0.2371)	Loss 0.298393
+Train Robocup_received_images_AtLoc_False: Epoch 44	Batch 0/58	Data time 1.2878 (1.2878)	Batch time 1.5184 (1.5184)	Loss 1.273727
+Train Robocup_received_images_AtLoc_False: Epoch 44	Batch 20/58	Data time 0.0001 (0.0618)	Batch time 0.1982 (0.2712)	Loss 1.600812
+Train Robocup_received_images_AtLoc_False: Epoch 44	Batch 40/58	Data time 0.0005 (0.0319)	Batch time 0.1989 (0.2353)	Loss 0.311922
+Val Robocup_received_images_AtLoc_False: Epoch 45	Batch 0/12	Data time 1.1730 (1.1730)	Batch time 1.2304 (1.2304)	Loss 0.733553
+Val Robocup_received_images_AtLoc_False: Epoch 45, val_loss 0.710587
+Epoch 45 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 45	Batch 0/58	Data time 1.4529 (1.4529)	Batch time 1.6799 (1.6799)	Loss 0.517221
+Train Robocup_received_images_AtLoc_False: Epoch 45	Batch 20/58	Data time 0.0003 (0.0697)	Batch time 0.1983 (0.2766)	Loss 0.626030
+Train Robocup_received_images_AtLoc_False: Epoch 45	Batch 40/58	Data time 0.0006 (0.0359)	Batch time 0.1972 (0.2395)	Loss -0.290966
+Train Robocup_received_images_AtLoc_False: Epoch 46	Batch 0/58	Data time 1.2391 (1.2391)	Batch time 1.4671 (1.4671)	Loss -0.058249
+Train Robocup_received_images_AtLoc_False: Epoch 46	Batch 20/58	Data time 0.0003 (0.0595)	Batch time 0.1977 (0.2667)	Loss 0.564133
+Train Robocup_received_images_AtLoc_False: Epoch 46	Batch 40/58	Data time 0.0001 (0.0306)	Batch time 0.2074 (0.2336)	Loss 1.041989
+Train Robocup_received_images_AtLoc_False: Epoch 47	Batch 0/58	Data time 1.1457 (1.1457)	Batch time 1.3676 (1.3676)	Loss -0.254520
+Train Robocup_received_images_AtLoc_False: Epoch 47	Batch 20/58	Data time 0.0003 (0.0551)	Batch time 0.1970 (0.2648)	Loss 0.485441
+Train Robocup_received_images_AtLoc_False: Epoch 47	Batch 40/58	Data time 0.0005 (0.0284)	Batch time 0.1970 (0.2325)	Loss -0.278059
+Train Robocup_received_images_AtLoc_False: Epoch 48	Batch 0/58	Data time 1.2694 (1.2694)	Batch time 1.4916 (1.4916)	Loss -0.138717
+Train Robocup_received_images_AtLoc_False: Epoch 48	Batch 20/58	Data time 0.0004 (0.0612)	Batch time 0.2144 (0.2774)	Loss 0.389817
+Train Robocup_received_images_AtLoc_False: Epoch 48	Batch 40/58	Data time 0.0003 (0.0317)	Batch time 0.2173 (0.2464)	Loss 0.459915
+Train Robocup_received_images_AtLoc_False: Epoch 49	Batch 0/58	Data time 1.6829 (1.6829)	Batch time 1.9371 (1.9371)	Loss 0.344245
+Train Robocup_received_images_AtLoc_False: Epoch 49	Batch 20/58	Data time 0.0011 (0.0810)	Batch time 0.2095 (0.3059)	Loss 0.103292
+Train Robocup_received_images_AtLoc_False: Epoch 49	Batch 40/58	Data time 0.0010 (0.0418)	Batch time 0.2111 (0.2569)	Loss 0.524355
+Val Robocup_received_images_AtLoc_False: Epoch 50	Batch 0/12	Data time 1.3153 (1.3153)	Batch time 1.3744 (1.3744)	Loss 0.805041
+Val Robocup_received_images_AtLoc_False: Epoch 50, val_loss 0.647930
+Epoch 50 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 50	Batch 0/58	Data time 1.7754 (1.7754)	Batch time 2.0376 (2.0376)	Loss 0.277212
+Train Robocup_received_images_AtLoc_False: Epoch 50	Batch 20/58	Data time 0.0001 (0.0851)	Batch time 0.2004 (0.2972)	Loss -0.084985
+Train Robocup_received_images_AtLoc_False: Epoch 50	Batch 40/58	Data time 0.0002 (0.0438)	Batch time 0.1997 (0.2547)	Loss 0.660023
+Train Robocup_received_images_AtLoc_False: Epoch 51	Batch 0/58	Data time 1.3755 (1.3755)	Batch time 1.5962 (1.5962)	Loss 0.002972
+Train Robocup_received_images_AtLoc_False: Epoch 51	Batch 20/58	Data time 0.0004 (0.0660)	Batch time 0.1991 (0.2708)	Loss 0.770221
+Train Robocup_received_images_AtLoc_False: Epoch 51	Batch 40/58	Data time 0.0001 (0.0340)	Batch time 0.2065 (0.2364)	Loss 0.019614
+Train Robocup_received_images_AtLoc_False: Epoch 52	Batch 0/58	Data time 1.4228 (1.4228)	Batch time 1.6453 (1.6453)	Loss -0.356266
+Train Robocup_received_images_AtLoc_False: Epoch 52	Batch 20/58	Data time 0.0006 (0.0685)	Batch time 0.2035 (0.2849)	Loss -0.475121
+Train Robocup_received_images_AtLoc_False: Epoch 52	Batch 40/58	Data time 0.0019 (0.0355)	Batch time 0.2177 (0.2499)	Loss -0.469660
+Train Robocup_received_images_AtLoc_False: Epoch 53	Batch 0/58	Data time 1.4314 (1.4314)	Batch time 1.6517 (1.6517)	Loss 0.027654
+Train Robocup_received_images_AtLoc_False: Epoch 53	Batch 20/58	Data time 0.0003 (0.0688)	Batch time 0.2100 (0.2872)	Loss -0.013959
+Train Robocup_received_images_AtLoc_False: Epoch 53	Batch 40/58	Data time 0.0004 (0.0355)	Batch time 0.2057 (0.2491)	Loss -0.522542
+Train Robocup_received_images_AtLoc_False: Epoch 54	Batch 0/58	Data time 1.5229 (1.5229)	Batch time 1.7432 (1.7432)	Loss -0.825478
+Train Robocup_received_images_AtLoc_False: Epoch 54	Batch 20/58	Data time 0.0014 (0.0733)	Batch time 0.2339 (0.2900)	Loss -0.482821
+Train Robocup_received_images_AtLoc_False: Epoch 54	Batch 40/58	Data time 0.0002 (0.0381)	Batch time 0.2024 (0.2574)	Loss -0.395580
+Val Robocup_received_images_AtLoc_False: Epoch 55	Batch 0/12	Data time 1.9626 (1.9626)	Batch time 2.0236 (2.0236)	Loss 0.901493
+Val Robocup_received_images_AtLoc_False: Epoch 55, val_loss 0.619860
+Epoch 55 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 55	Batch 0/58	Data time 2.2538 (2.2538)	Batch time 2.5060 (2.5060)	Loss -0.113734
+Train Robocup_received_images_AtLoc_False: Epoch 55	Batch 20/58	Data time 0.0007 (0.1083)	Batch time 0.2147 (0.3407)	Loss -0.056937
+Train Robocup_received_images_AtLoc_False: Epoch 55	Batch 40/58	Data time 0.0003 (0.0558)	Batch time 0.1983 (0.2787)	Loss -0.509252
+Train Robocup_received_images_AtLoc_False: Epoch 56	Batch 0/58	Data time 1.3567 (1.3567)	Batch time 1.5925 (1.5925)	Loss -0.363675
+Train Robocup_received_images_AtLoc_False: Epoch 56	Batch 20/58	Data time 0.0004 (0.0652)	Batch time 0.2009 (0.2786)	Loss -0.616568
+Train Robocup_received_images_AtLoc_False: Epoch 56	Batch 40/58	Data time 0.0007 (0.0337)	Batch time 0.1999 (0.2422)	Loss -0.661168
+Train Robocup_received_images_AtLoc_False: Epoch 57	Batch 0/58	Data time 1.3103 (1.3103)	Batch time 1.5283 (1.5283)	Loss -0.134173
+Train Robocup_received_images_AtLoc_False: Epoch 57	Batch 20/58	Data time 0.0007 (0.0630)	Batch time 0.1983 (0.2765)	Loss -0.194102
+Train Robocup_received_images_AtLoc_False: Epoch 57	Batch 40/58	Data time 0.0007 (0.0325)	Batch time 0.1984 (0.2404)	Loss -0.878560
+Train Robocup_received_images_AtLoc_False: Epoch 58	Batch 0/58	Data time 1.3094 (1.3094)	Batch time 1.5296 (1.5296)	Loss -0.723342
+Train Robocup_received_images_AtLoc_False: Epoch 58	Batch 20/58	Data time 0.0001 (0.0630)	Batch time 0.1983 (0.2758)	Loss -0.540785
+Train Robocup_received_images_AtLoc_False: Epoch 58	Batch 40/58	Data time 0.0004 (0.0325)	Batch time 0.2126 (0.2421)	Loss -0.666284
+Train Robocup_received_images_AtLoc_False: Epoch 59	Batch 0/58	Data time 1.7025 (1.7025)	Batch time 1.9453 (1.9453)	Loss -0.416335
+Train Robocup_received_images_AtLoc_False: Epoch 59	Batch 20/58	Data time 0.0011 (0.0818)	Batch time 0.2111 (0.3030)	Loss -0.668814
+Train Robocup_received_images_AtLoc_False: Epoch 59	Batch 40/58	Data time 0.0006 (0.0421)	Batch time 0.1995 (0.2532)	Loss -0.712716
+Val Robocup_received_images_AtLoc_False: Epoch 60	Batch 0/12	Data time 1.2386 (1.2386)	Batch time 1.2932 (1.2932)	Loss 0.541786
+Val Robocup_received_images_AtLoc_False: Epoch 60, val_loss 0.534549
+Epoch 60 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 60	Batch 0/58	Data time 1.8700 (1.8700)	Batch time 2.1120 (2.1120)	Loss -0.402020
+Train Robocup_received_images_AtLoc_False: Epoch 60	Batch 20/58	Data time 0.0007 (0.0897)	Batch time 0.2013 (0.3004)	Loss -0.246854
+Train Robocup_received_images_AtLoc_False: Epoch 60	Batch 40/58	Data time 0.0003 (0.0461)	Batch time 0.1974 (0.2529)	Loss -0.316119
+Train Robocup_received_images_AtLoc_False: Epoch 61	Batch 0/58	Data time 1.4440 (1.4440)	Batch time 1.6601 (1.6601)	Loss -0.697144
+Train Robocup_received_images_AtLoc_False: Epoch 61	Batch 20/58	Data time 0.0001 (0.0692)	Batch time 0.1985 (0.2797)	Loss -0.718287
+Train Robocup_received_images_AtLoc_False: Epoch 61	Batch 40/58	Data time 0.0003 (0.0357)	Batch time 0.2038 (0.2441)	Loss -0.265476
+Train Robocup_received_images_AtLoc_False: Epoch 62	Batch 0/58	Data time 1.7202 (1.7202)	Batch time 1.9778 (1.9778)	Loss -0.631148
+Train Robocup_received_images_AtLoc_False: Epoch 62	Batch 20/58	Data time 0.0004 (0.0824)	Batch time 0.1981 (0.2914)	Loss -0.649740
+Train Robocup_received_images_AtLoc_False: Epoch 62	Batch 40/58	Data time 0.0012 (0.0424)	Batch time 0.2081 (0.2484)	Loss -0.580133
+Train Robocup_received_images_AtLoc_False: Epoch 63	Batch 0/58	Data time 1.2728 (1.2728)	Batch time 1.4956 (1.4956)	Loss -0.490534
+Train Robocup_received_images_AtLoc_False: Epoch 63	Batch 20/58	Data time 0.0001 (0.0611)	Batch time 0.1987 (0.2693)	Loss -0.844737
+Train Robocup_received_images_AtLoc_False: Epoch 63	Batch 40/58	Data time 0.0001 (0.0315)	Batch time 0.2060 (0.2386)	Loss -1.129027
+Train Robocup_received_images_AtLoc_False: Epoch 64	Batch 0/58	Data time 1.9084 (1.9084)	Batch time 2.1623 (2.1623)	Loss -0.710577
+Train Robocup_received_images_AtLoc_False: Epoch 64	Batch 20/58	Data time 0.0004 (0.0917)	Batch time 0.2086 (0.3164)	Loss -0.758678
+Train Robocup_received_images_AtLoc_False: Epoch 64	Batch 40/58	Data time 0.0001 (0.0472)	Batch time 0.1993 (0.2628)	Loss -0.714664
+Val Robocup_received_images_AtLoc_False: Epoch 65	Batch 0/12	Data time 1.2196 (1.2196)	Batch time 1.2744 (1.2744)	Loss 0.507167
+Val Robocup_received_images_AtLoc_False: Epoch 65, val_loss 0.488416
+Epoch 65 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 65	Batch 0/58	Data time 1.6332 (1.6332)	Batch time 1.9124 (1.9124)	Loss -0.331151
+Train Robocup_received_images_AtLoc_False: Epoch 65	Batch 20/58	Data time 0.0007 (0.0803)	Batch time 0.2050 (0.3034)	Loss -0.991567
+Train Robocup_received_images_AtLoc_False: Epoch 65	Batch 40/58	Data time 0.0001 (0.0414)	Batch time 0.1994 (0.2554)	Loss -0.503790
+Train Robocup_received_images_AtLoc_False: Epoch 66	Batch 0/58	Data time 1.7386 (1.7386)	Batch time 1.9748 (1.9748)	Loss -1.040276
+Train Robocup_received_images_AtLoc_False: Epoch 66	Batch 20/58	Data time 0.0003 (0.0835)	Batch time 0.2051 (0.2986)	Loss -0.950276
+Train Robocup_received_images_AtLoc_False: Epoch 66	Batch 40/58	Data time 0.0004 (0.0430)	Batch time 0.1966 (0.2515)	Loss -0.904317
+Train Robocup_received_images_AtLoc_False: Epoch 67	Batch 0/58	Data time 1.3137 (1.3137)	Batch time 1.5338 (1.5338)	Loss -0.948895
+Train Robocup_received_images_AtLoc_False: Epoch 67	Batch 20/58	Data time 0.0004 (0.0631)	Batch time 0.1980 (0.2731)	Loss -1.144729
+Train Robocup_received_images_AtLoc_False: Epoch 67	Batch 40/58	Data time 0.0003 (0.0325)	Batch time 0.2159 (0.2385)	Loss -1.438086
+Train Robocup_received_images_AtLoc_False: Epoch 68	Batch 0/58	Data time 1.3226 (1.3226)	Batch time 1.5402 (1.5402)	Loss -0.817496
+Train Robocup_received_images_AtLoc_False: Epoch 68	Batch 20/58	Data time 0.0003 (0.0635)	Batch time 0.1990 (0.2731)	Loss -1.111105
+Train Robocup_received_images_AtLoc_False: Epoch 68	Batch 40/58	Data time 0.0005 (0.0327)	Batch time 0.2009 (0.2384)	Loss -0.278284
+Train Robocup_received_images_AtLoc_False: Epoch 69	Batch 0/58	Data time 1.3693 (1.3693)	Batch time 1.5886 (1.5886)	Loss -1.151054
+Train Robocup_received_images_AtLoc_False: Epoch 69	Batch 20/58	Data time 0.0004 (0.0657)	Batch time 0.1999 (0.2750)	Loss -0.659633
+Train Robocup_received_images_AtLoc_False: Epoch 69	Batch 40/58	Data time 0.0002 (0.0338)	Batch time 0.1969 (0.2390)	Loss -1.185305
+Val Robocup_received_images_AtLoc_False: Epoch 70	Batch 0/12	Data time 1.2937 (1.2937)	Batch time 1.3497 (1.3497)	Loss 0.466151
+Val Robocup_received_images_AtLoc_False: Epoch 70, val_loss 0.440376
+Epoch 70 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 70	Batch 0/58	Data time 1.5415 (1.5415)	Batch time 1.7918 (1.7918)	Loss -0.993722
+Train Robocup_received_images_AtLoc_False: Epoch 70	Batch 20/58	Data time 0.0014 (0.0745)	Batch time 0.2154 (0.3146)	Loss -1.173610
+Train Robocup_received_images_AtLoc_False: Epoch 70	Batch 40/58	Data time 0.0003 (0.0385)	Batch time 0.1994 (0.2664)	Loss -1.393099
+Train Robocup_received_images_AtLoc_False: Epoch 71	Batch 0/58	Data time 1.6865 (1.6865)	Batch time 1.9175 (1.9175)	Loss -0.920310
+Train Robocup_received_images_AtLoc_False: Epoch 71	Batch 20/58	Data time 0.0001 (0.0808)	Batch time 0.2005 (0.2928)	Loss -1.197467
+Train Robocup_received_images_AtLoc_False: Epoch 71	Batch 40/58	Data time 0.0004 (0.0416)	Batch time 0.1983 (0.2480)	Loss -1.003187
+Train Robocup_received_images_AtLoc_False: Epoch 72	Batch 0/58	Data time 1.4392 (1.4392)	Batch time 1.6585 (1.6585)	Loss -0.891507
+Train Robocup_received_images_AtLoc_False: Epoch 72	Batch 20/58	Data time 0.0001 (0.0692)	Batch time 0.2083 (0.2802)	Loss -1.149279
+Train Robocup_received_images_AtLoc_False: Epoch 72	Batch 40/58	Data time 0.0003 (0.0356)	Batch time 0.1995 (0.2417)	Loss -0.924870
+Train Robocup_received_images_AtLoc_False: Epoch 73	Batch 0/58	Data time 1.5109 (1.5109)	Batch time 1.7328 (1.7328)	Loss -0.977169
+Train Robocup_received_images_AtLoc_False: Epoch 73	Batch 20/58	Data time 0.0005 (0.0728)	Batch time 0.2166 (0.3001)	Loss -0.958655
+Train Robocup_received_images_AtLoc_False: Epoch 73	Batch 40/58	Data time 0.0007 (0.0375)	Batch time 0.1980 (0.2533)	Loss -0.804996
+Train Robocup_received_images_AtLoc_False: Epoch 74	Batch 0/58	Data time 1.2391 (1.2391)	Batch time 1.4616 (1.4616)	Loss -0.213522
+Train Robocup_received_images_AtLoc_False: Epoch 74	Batch 20/58	Data time 0.0001 (0.0597)	Batch time 0.2053 (0.2762)	Loss -0.607729
+Train Robocup_received_images_AtLoc_False: Epoch 74	Batch 40/58	Data time 0.0003 (0.0308)	Batch time 0.1985 (0.2411)	Loss -1.235909
+Val Robocup_received_images_AtLoc_False: Epoch 75	Batch 0/12	Data time 1.6629 (1.6629)	Batch time 1.7159 (1.7159)	Loss 0.512179
+Val Robocup_received_images_AtLoc_False: Epoch 75, val_loss 0.454332
+Epoch 75 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 75	Batch 0/58	Data time 1.7038 (1.7038)	Batch time 1.9960 (1.9960)	Loss -1.260477
+Train Robocup_received_images_AtLoc_False: Epoch 75	Batch 20/58	Data time 0.0006 (0.0823)	Batch time 0.2114 (0.3066)	Loss -1.127412
+Train Robocup_received_images_AtLoc_False: Epoch 75	Batch 40/58	Data time 0.0003 (0.0424)	Batch time 0.1995 (0.2571)	Loss -1.475797
+Train Robocup_received_images_AtLoc_False: Epoch 76	Batch 0/58	Data time 1.7640 (1.7640)	Batch time 2.0160 (2.0160)	Loss -1.259695
+Train Robocup_received_images_AtLoc_False: Epoch 76	Batch 20/58	Data time 0.0008 (0.0846)	Batch time 0.2115 (0.2996)	Loss -1.185083
+Train Robocup_received_images_AtLoc_False: Epoch 76	Batch 40/58	Data time 0.0006 (0.0436)	Batch time 0.2029 (0.2569)	Loss -1.242762
+Train Robocup_received_images_AtLoc_False: Epoch 77	Batch 0/58	Data time 1.3973 (1.3973)	Batch time 1.6218 (1.6218)	Loss -1.198797
+Train Robocup_received_images_AtLoc_False: Epoch 77	Batch 20/58	Data time 0.0004 (0.0672)	Batch time 0.2097 (0.2815)	Loss -0.992808
+Train Robocup_received_images_AtLoc_False: Epoch 77	Batch 40/58	Data time 0.0008 (0.0347)	Batch time 0.2062 (0.2449)	Loss -1.371066
+Train Robocup_received_images_AtLoc_False: Epoch 78	Batch 0/58	Data time 1.4744 (1.4744)	Batch time 1.7113 (1.7113)	Loss -0.986059
+Train Robocup_received_images_AtLoc_False: Epoch 78	Batch 20/58	Data time 0.0012 (0.0709)	Batch time 0.2161 (0.2889)	Loss -1.066543
+Train Robocup_received_images_AtLoc_False: Epoch 78	Batch 40/58	Data time 0.0006 (0.0366)	Batch time 0.2018 (0.2490)	Loss -1.194754
+Train Robocup_received_images_AtLoc_False: Epoch 79	Batch 0/58	Data time 1.4615 (1.4615)	Batch time 1.7232 (1.7232)	Loss -0.964729
+Train Robocup_received_images_AtLoc_False: Epoch 79	Batch 20/58	Data time 0.0003 (0.0705)	Batch time 0.2136 (0.2984)	Loss -1.086866
+Train Robocup_received_images_AtLoc_False: Epoch 79	Batch 40/58	Data time 0.0006 (0.0364)	Batch time 0.2064 (0.2537)	Loss -1.292460
+Val Robocup_received_images_AtLoc_False: Epoch 80	Batch 0/12	Data time 1.4053 (1.4053)	Batch time 1.4597 (1.4597)	Loss 0.421449
+Val Robocup_received_images_AtLoc_False: Epoch 80, val_loss 0.431004
+Epoch 80 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 80	Batch 0/58	Data time 1.3274 (1.3274)	Batch time 1.5633 (1.5633)	Loss -1.294530
+Train Robocup_received_images_AtLoc_False: Epoch 80	Batch 20/58	Data time 0.0002 (0.0637)	Batch time 0.2035 (0.2776)	Loss -0.786010
+Train Robocup_received_images_AtLoc_False: Epoch 80	Batch 40/58	Data time 0.0007 (0.0329)	Batch time 0.2024 (0.2412)	Loss -0.866812
+Train Robocup_received_images_AtLoc_False: Epoch 81	Batch 0/58	Data time 1.3752 (1.3752)	Batch time 1.6082 (1.6082)	Loss -1.188004
+Train Robocup_received_images_AtLoc_False: Epoch 81	Batch 20/58	Data time 0.0004 (0.0661)	Batch time 0.1983 (0.2807)	Loss -1.628060
+Train Robocup_received_images_AtLoc_False: Epoch 81	Batch 40/58	Data time 0.0001 (0.0340)	Batch time 0.1987 (0.2430)	Loss -1.594378
+Train Robocup_received_images_AtLoc_False: Epoch 82	Batch 0/58	Data time 1.3345 (1.3345)	Batch time 1.5669 (1.5669)	Loss -1.387239
+Train Robocup_received_images_AtLoc_False: Epoch 82	Batch 20/58	Data time 0.0004 (0.0642)	Batch time 0.2082 (0.2820)	Loss -1.281186
+Train Robocup_received_images_AtLoc_False: Epoch 82	Batch 40/58	Data time 0.0003 (0.0332)	Batch time 0.1995 (0.2462)	Loss -1.668612
+Train Robocup_received_images_AtLoc_False: Epoch 83	Batch 0/58	Data time 1.2824 (1.2824)	Batch time 1.5058 (1.5058)	Loss -1.396984
+Train Robocup_received_images_AtLoc_False: Epoch 83	Batch 20/58	Data time 0.0003 (0.0616)	Batch time 0.2046 (0.2718)	Loss -1.665343
+Train Robocup_received_images_AtLoc_False: Epoch 83	Batch 40/58	Data time 0.0005 (0.0318)	Batch time 0.2029 (0.2392)	Loss -1.260124
+Train Robocup_received_images_AtLoc_False: Epoch 84	Batch 0/58	Data time 1.6134 (1.6134)	Batch time 1.8367 (1.8367)	Loss -1.106648
+Train Robocup_received_images_AtLoc_False: Epoch 84	Batch 20/58	Data time 0.0003 (0.0774)	Batch time 0.1991 (0.2864)	Loss -1.099816
+Train Robocup_received_images_AtLoc_False: Epoch 84	Batch 40/58	Data time 0.0003 (0.0399)	Batch time 0.2098 (0.2464)	Loss -1.493951
+Val Robocup_received_images_AtLoc_False: Epoch 85	Batch 0/12	Data time 1.2465 (1.2465)	Batch time 1.3057 (1.3057)	Loss 0.411257
+Val Robocup_received_images_AtLoc_False: Epoch 85, val_loss 0.395631
+Epoch 85 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 85	Batch 0/58	Data time 1.4825 (1.4825)	Batch time 1.7057 (1.7057)	Loss -1.472658
+Train Robocup_received_images_AtLoc_False: Epoch 85	Batch 20/58	Data time 0.0005 (0.0733)	Batch time 0.2052 (0.2840)	Loss -1.636163
+Train Robocup_received_images_AtLoc_False: Epoch 85	Batch 40/58	Data time 0.0007 (0.0378)	Batch time 0.2000 (0.2456)	Loss -1.538986
+Train Robocup_received_images_AtLoc_False: Epoch 86	Batch 0/58	Data time 1.2597 (1.2597)	Batch time 1.4869 (1.4869)	Loss -1.178010
+Train Robocup_received_images_AtLoc_False: Epoch 86	Batch 20/58	Data time 0.0004 (0.0605)	Batch time 0.1997 (0.2707)	Loss -1.415082
+Train Robocup_received_images_AtLoc_False: Epoch 86	Batch 40/58	Data time 0.0002 (0.0312)	Batch time 0.1998 (0.2379)	Loss -1.101253
+Train Robocup_received_images_AtLoc_False: Epoch 87	Batch 0/58	Data time 1.4244 (1.4244)	Batch time 1.6413 (1.6413)	Loss -1.594522
+Train Robocup_received_images_AtLoc_False: Epoch 87	Batch 20/58	Data time 0.0006 (0.0682)	Batch time 0.1975 (0.2738)	Loss -1.255371
+Train Robocup_received_images_AtLoc_False: Epoch 87	Batch 40/58	Data time 0.0001 (0.0351)	Batch time 0.2016 (0.2383)	Loss -1.456692
+Train Robocup_received_images_AtLoc_False: Epoch 88	Batch 0/58	Data time 1.4595 (1.4595)	Batch time 1.6828 (1.6828)	Loss -1.841479
+Train Robocup_received_images_AtLoc_False: Epoch 88	Batch 20/58	Data time 0.0004 (0.0700)	Batch time 0.2125 (0.2783)	Loss -1.618736
+Train Robocup_received_images_AtLoc_False: Epoch 88	Batch 40/58	Data time 0.0001 (0.0361)	Batch time 0.1978 (0.2414)	Loss -1.408238
+Train Robocup_received_images_AtLoc_False: Epoch 89	Batch 0/58	Data time 1.4214 (1.4214)	Batch time 1.6431 (1.6431)	Loss -1.492476
+Train Robocup_received_images_AtLoc_False: Epoch 89	Batch 20/58	Data time 0.0008 (0.0682)	Batch time 0.1984 (0.2738)	Loss -1.439984
+Train Robocup_received_images_AtLoc_False: Epoch 89	Batch 40/58	Data time 0.0004 (0.0351)	Batch time 0.2106 (0.2393)	Loss -1.785825
+Val Robocup_received_images_AtLoc_False: Epoch 90	Batch 0/12	Data time 1.5554 (1.5554)	Batch time 1.6146 (1.6146)	Loss 0.406250
+Val Robocup_received_images_AtLoc_False: Epoch 90, val_loss 0.398983
+Epoch 90 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 90	Batch 0/58	Data time 1.6659 (1.6659)	Batch time 1.9097 (1.9097)	Loss -1.357685
+Train Robocup_received_images_AtLoc_False: Epoch 90	Batch 20/58	Data time 0.0005 (0.0799)	Batch time 0.2041 (0.2957)	Loss -1.636236
+Train Robocup_received_images_AtLoc_False: Epoch 90	Batch 40/58	Data time 0.0011 (0.0412)	Batch time 0.2110 (0.2535)	Loss -1.472200
+Train Robocup_received_images_AtLoc_False: Epoch 91	Batch 0/58	Data time 1.2419 (1.2419)	Batch time 1.4627 (1.4627)	Loss -1.498365
+Train Robocup_received_images_AtLoc_False: Epoch 91	Batch 20/58	Data time 0.0005 (0.0598)	Batch time 0.2024 (0.2761)	Loss -1.585056
+Train Robocup_received_images_AtLoc_False: Epoch 91	Batch 40/58	Data time 0.0012 (0.0309)	Batch time 0.2119 (0.2420)	Loss -1.632807
+Train Robocup_received_images_AtLoc_False: Epoch 92	Batch 0/58	Data time 1.5194 (1.5194)	Batch time 1.7522 (1.7522)	Loss -1.515226
+Train Robocup_received_images_AtLoc_False: Epoch 92	Batch 20/58	Data time 0.0004 (0.0729)	Batch time 0.2005 (0.2814)	Loss -1.302146
+Train Robocup_received_images_AtLoc_False: Epoch 92	Batch 40/58	Data time 0.0006 (0.0375)	Batch time 0.2002 (0.2427)	Loss -1.507111
+Train Robocup_received_images_AtLoc_False: Epoch 93	Batch 0/58	Data time 1.2969 (1.2969)	Batch time 1.5200 (1.5200)	Loss -1.504642
+Train Robocup_received_images_AtLoc_False: Epoch 93	Batch 20/58	Data time 0.0009 (0.0624)	Batch time 0.2094 (0.2735)	Loss -1.698366
+Train Robocup_received_images_AtLoc_False: Epoch 93	Batch 40/58	Data time 0.0005 (0.0321)	Batch time 0.1989 (0.2377)	Loss -1.296472
+Train Robocup_received_images_AtLoc_False: Epoch 94	Batch 0/58	Data time 1.4158 (1.4158)	Batch time 1.6561 (1.6561)	Loss -1.382368
+Train Robocup_received_images_AtLoc_False: Epoch 94	Batch 20/58	Data time 0.0004 (0.0680)	Batch time 0.2227 (0.2845)	Loss -1.232150
+Train Robocup_received_images_AtLoc_False: Epoch 94	Batch 40/58	Data time 0.0003 (0.0352)	Batch time 0.2031 (0.2482)	Loss -1.522604
+Val Robocup_received_images_AtLoc_False: Epoch 95	Batch 0/12	Data time 1.3471 (1.3471)	Batch time 1.4032 (1.4032)	Loss 0.398291
+Val Robocup_received_images_AtLoc_False: Epoch 95, val_loss 0.389957
+Epoch 95 checkpoint saved for Robocup_received_images_AtLoc_False
+Train Robocup_received_images_AtLoc_False: Epoch 95	Batch 0/58	Data time 1.4208 (1.4208)	Batch time 1.6582 (1.6582)	Loss -1.504818
+Train Robocup_received_images_AtLoc_False: Epoch 95	Batch 20/58	Data time 0.0005 (0.0683)	Batch time 0.2023 (0.2808)	Loss -1.456819
+Train Robocup_received_images_AtLoc_False: Epoch 95	Batch 40/58	Data time 0.0007 (0.0352)	Batch time 0.1989 (0.2455)	Loss -1.714443
+Train Robocup_received_images_AtLoc_False: Epoch 96	Batch 0/58	Data time 1.8572 (1.8572)	Batch time 2.0950 (2.0950)	Loss -1.685900
+Train Robocup_received_images_AtLoc_False: Epoch 96	Batch 20/58	Data time 0.0006 (0.0893)	Batch time 0.2023 (0.3134)	Loss -1.419258
+Train Robocup_received_images_AtLoc_False: Epoch 96	Batch 40/58	Data time 0.0003 (0.0459)	Batch time 0.1986 (0.2585)	Loss -1.876698
+Train Robocup_received_images_AtLoc_False: Epoch 97	Batch 0/58	Data time 1.3097 (1.3097)	Batch time 1.5369 (1.5369)	Loss -0.913935
+Train Robocup_received_images_AtLoc_False: Epoch 97	Batch 20/58	Data time 0.0004 (0.0629)	Batch time 0.2005 (0.2740)	Loss -1.719299
+Train Robocup_received_images_AtLoc_False: Epoch 97	Batch 40/58	Data time 0.0002 (0.0324)	Batch time 0.2010 (0.2384)	Loss -1.512001
+Train Robocup_received_images_AtLoc_False: Epoch 98	Batch 0/58	Data time 1.3015 (1.3015)	Batch time 1.5235 (1.5235)	Loss -1.638875
+Train Robocup_received_images_AtLoc_False: Epoch 98	Batch 20/58	Data time 0.0001 (0.0625)	Batch time 0.1982 (0.2695)	Loss -1.557156
+Train Robocup_received_images_AtLoc_False: Epoch 98	Batch 40/58	Data time 0.0002 (0.0322)	Batch time 0.1993 (0.2355)	Loss -1.431540
+Val Robocup_received_images_AtLoc_False: Epoch 99	Batch 0/12	Data time 1.4280 (1.4280)	Batch time 1.4816 (1.4816)	Loss 0.360796
+Val Robocup_received_images_AtLoc_False: Epoch 99, val_loss 0.353002
+Train Robocup_received_images_AtLoc_False: Epoch 99	Batch 0/58	Data time 1.5047 (1.5047)	Batch time 1.7247 (1.7247)	Loss -1.741593
+Train Robocup_received_images_AtLoc_False: Epoch 99	Batch 20/58	Data time 0.0004 (0.0721)	Batch time 0.1995 (0.2805)	Loss -1.713125
+Train Robocup_received_images_AtLoc_False: Epoch 99	Batch 40/58	Data time 0.0004 (0.0371)	Batch time 0.1992 (0.2423)	Loss -1.425623
