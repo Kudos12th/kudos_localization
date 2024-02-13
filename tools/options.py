@@ -49,6 +49,9 @@ class Options():
         self.parser.add_argument('--save_freq', type=int, default=5)
         self.parser.add_argument('--cam', type=int, default=0)
 
+        self.parser.add_argument('--translation_threshold', type=float, default=0.5)
+        self.parser.add_argument('--rotation_threshold', type=float, default=0.5)
+
 
     def parse(self):
         self.initialize()
