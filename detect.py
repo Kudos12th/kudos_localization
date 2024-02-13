@@ -138,8 +138,10 @@ if __name__ == "__main__":
                 full_image, net_image, pad = get_image_tensor(image, input_size[0])
 
                 # Preprocess image for Edge TPU model
-                input_data = np.expand_dims(resized_image, axis=0)
-                input_data = common.input_image(input_data)
+                resized_image = cv2.resize(image, (224, 224))
+                input_data = np.expand_dims(resized_image, axis=0).astype(np.float32)
+                input_data = input_data.transpose((0, 3, 1, 2))
+
                 interpreter.set_tensor(input_details[0]['index'], input_data)
 
                 # Run inference
