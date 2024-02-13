@@ -114,6 +114,14 @@ q_loss = np.asarray([y_criterion(p, t) for p, t in zip(output_yaw, yaw)])
 print('Error in translation: median {:3.2f} m,  mean {:3.2f} m \nError in rotation: median {:3.2f} degrees, mean {:3.2f} degree'\
       .format(np.median(t_loss), np.mean(t_loss), np.median(q_loss), np.mean(q_loss)))
 
+# Calculate accuracy
+translation_accuracy = np.sum(t_loss < opt.translation_threshold) / len(t_loss)
+rotation_accuracy = np.sum(q_loss < opt.rotation_threshold) / len(q_loss)
+
+
+print('Translation Accuracy: {:.2%}'.format(translation_accuracy))
+print('Rotation Accuracy: {:.2%}'.format(rotation_accuracy))
+
 fig = plt.figure()
 real_pose = (pred_poses - pose_m) / pose_s
 gt_pose = (targ_poses - pose_m) / pose_s
