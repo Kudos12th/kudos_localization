@@ -71,7 +71,6 @@ robocup_kwargs = {k: kwargs[k] for k in ['data_path', 'transform', 'target_trans
 if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
     train_set = Robocup(train=True, val=False,**robocup_kwargs)
     val_set = Robocup(train=False, val=True, **robocup_kwargs)
-    test_set = Robocup(train=False, val=False, **robocup_kwargs)
 else:
     raise NotImplementedError
 
