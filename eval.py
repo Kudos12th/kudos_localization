@@ -20,6 +20,7 @@ from utils import load_state_dict
 from dataloaders import Robocup
 from torch.utils.data import DataLoader
 from torch.autograd import Variable
+from sklearn.metrics import r2_score
 
 # Config
 opt = Options().parse()
@@ -108,19 +109,12 @@ for idx, (data, pose, yaw, angle) in enumerate(loader):
     targ_poses[idx, :] = pose[len(pose) // 2]
 
 # calculate losses
-t_loss = np.asarray([t_criterion(p, t) for p, t in zip(pred_poses, targ_poses)])
-q_loss = np.asarray([y_criterion(p, t) for p, t in zip(output_yaw, yaw)])
 
-print('Error in translation: median {:3.2f} m,  mean {:3.2f} m \nError in rotation: median {:3.2f} degrees, mean {:3.2f} degree'\
-      .format(np.median(t_loss), np.mean(t_loss), np.median(q_loss), np.mean(q_loss)))
+r2_translation = r2_score(targ_poses, pred_poses)
+r2_rotation = r2_score(yaw, output_yaw)
 
-# Calculate accuracy
-translation_accuracy = np.sum(t_loss < opt.translation_threshold) / len(t_loss)
-rotation_accuracy = np.sum(q_loss < opt.rotation_threshold) / len(q_loss)
-
-
-print('Translation Accuracy: {:.2%}'.format(translation_accuracy))
-print('Rotation Accuracy: {:.2%}'.format(rotation_accuracy))
+print('R2 Score - Translation: {:.4f}'.format(r2_translation))
+print('R2 Score - Rotation: {:.4f}'.format(r2_rotation))
 
 fig = plt.figure()
 real_pose = (pred_poses - pose_m) / pose_s
