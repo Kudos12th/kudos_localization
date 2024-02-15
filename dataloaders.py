@@ -24,10 +24,13 @@ class Robocup(data.Dataset):
 
         split_index = int(len(all_imgs) * 0.7)
         split_index2 = int(len(all_imgs) * 0.85)
+        
         if train:
             self.imgs = all_imgs[:split_index]  # train
         elif val:
             self.imgs = all_imgs[split_index:split_index2]  # val
+        elif scene == 'test_images': #test_images
+            self.imgs = all_imgs
         else:
             self.imgs = all_imgs[split_index2:]  # test
 
