@@ -5,15 +5,8 @@ os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 import torch
 import os.path as osp
 import numpy as np
-import matplotlib
 import sys
 from PIL import Image
-
-
-DISPLAY = 'DISPLAY' in os.environ
-if not DISPLAY:
-    matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 
 import logging
 import time
@@ -34,8 +27,6 @@ from tools.options import Options
 from network.atloc import AtLoc
 from torchvision import transforms, models
 from utils import load_state_dict
-from dataloaders import Robocup
-from torch.utils.data import DataLoader
 from torch.autograd import Variable
 
 # Config
@@ -96,24 +87,9 @@ if __name__ == "__main__":
         transforms.Normalize(mean=stats[0], std=np.sqrt(stats[1]))])
     target_transform = transforms.Lambda(lambda x: torch.from_numpy(x).float())
 
-    # TODO: pose_stats??
     # read mean and stdev for un-normalizing predictions
     pose_stats_file = osp.join(opt.data_dir, opt.dataset, opt.scene, 'pose_stats.txt')
     pose_m, pose_s = np.loadtxt(pose_stats_file)  # mean and stdev
-
-    # Load the dataset
-    kwargs = dict(scene=opt.scene, data_path=opt.data_dir, train=False, transform=data_transform, target_transform=target_transform, seed=opt.seed)
-    if opt.model == 'AtLoc' and opt.dataset == 'Robocup':
-            data_set = Robocup(**kwargs)
-    else:
-        raise NotImplementedError
-
-    L = len(data_set)
-    kwargs = {'num_workers': opt.nThreads, 'pin_memory': True} if cuda else {}
-    loader = DataLoader(data_set, batch_size=1, shuffle=False, **kwargs)
-
-    pred_poses = np.zeros((L, 2))  # store all predicted poses
-    targ_poses = np.zeros((L, 2))  # store all target poses
 
     # load weights
     model.to(device)
