@@ -17,7 +17,7 @@ AtLoc uses a Conda environment that makes it easy to install all dependencies.
 
 2. Create the `AtLoc` Conda environment: `conda env create -f environment.yml`.
 
-3. Activate the environment: `conda activate py27pt04`.
+3. Activate the environment: `conda activate py38pt21`.
 
 4. Note that our code has been tested with PyTorch v0.4.1 (the environment.yml file should take care of installing the appropriate version).
 
@@ -40,17 +40,12 @@ python3 dataset_mean.py --secne {SCENE}
 
 The executable script is `train.py`. For example:
 
-- AtLoc on `received_images`: 
+- AtLoc: 
 ```
 python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
 ```
 
-- AtLoc on `processed_images`: 
-```
-python3 train.py --dataset Robocup --scene received_images --model AtLoc --gpus 0
-```
-
-- AtLocLstm on `received_images`: 
+- AtLocLstm: 
 ```
 python3 train.py --scene received_images --model AtLoc --lstm True --gpus 0
 ```
@@ -77,9 +72,9 @@ Calculates the network attention visualizations and saves them in a video
 python3 saliency_map.py --scene received_images --model AtLoc --gpus 0 --weights {WEIGHTS_PATH}.pth.tar 
 ```
 
-- Detect
+Run
 ```
-python3 detect.py --weights {WEIGHTS_PATH}.pth.tar 
+python3 run.py --weights {WEIGHTS_PATH}.pth.tar 
 ```
 
 
