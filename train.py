@@ -27,7 +27,6 @@ print('Logging to {:s}'.format(logfile))
 sys.stdout = stdout
 
 # Model
-# TODO: resnet18로 교체해보기 or KD, Pruning?
 feature_extractor = models.resnet18(weights=None)
 atloc = AtLoc(feature_extractor, droprate=opt.train_dropout, pretrained=True, lstm=opt.lstm)
 if opt.model == 'AtLoc':
