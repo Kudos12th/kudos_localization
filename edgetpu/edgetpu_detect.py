@@ -25,8 +25,8 @@ logger = logging.getLogger(__name__)
 
 from tools.options import Options
 
-from edgetpu_model import EdgeTPUModel
-from edgetpu_utils import get_image_tensor
+from edgetpu.edgetpu_model import EdgeTPUModel
+from edgetpu.edgetpu_utils import get_image_tensor
 
 # Config
 opt = Options().parse()
