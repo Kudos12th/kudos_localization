@@ -13,7 +13,7 @@ This is the PyTorch implementation of **AtLoc**, a simple and efficient neural a
 
 AtLoc uses a Conda environment that makes it easy to install all dependencies.
 
-1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html) with Python 2.7.
+1. Install [miniconda](https://docs.conda.io/en/latest/miniconda.html) with Python 3.8.
 
 2. Create the `AtLoc` Conda environment: `conda env create -f environment.yml`.
 
